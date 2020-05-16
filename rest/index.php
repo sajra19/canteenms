@@ -25,5 +25,18 @@ Flight::route('GET /employee', function(){
  });
 
 
+ Flight::route('POST /employee', function(){
+   $request = Flight::request()->data->getData();
+   $request['fname'] = $request['fname'];
+ $request['orderdate'] = $request['orderdate'];
+ $request['ordertime'] = $request['ordertime'];
+ $request['status'] = $request['status'];
+  $request['amount'] = $request['amount'];
+ unset($request['fname'], $request['orderdate'], $request['ordertime'], $request['status'], $request['amount']);
+ Flight::employee_dao()->add($request);
+ Flight::json('Order has been added');
+});
+
+
 Flight::start();
 ?>

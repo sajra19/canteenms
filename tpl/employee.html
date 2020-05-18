@@ -14,7 +14,7 @@
 </style>
 
 <div style="margin-top:10%; margin-left: 2%; margin-right:2%">
-  <h2>jQuery Validation</h2>
+  <h2>Manage Employees</h2>
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Form</button>
 
@@ -24,27 +24,28 @@
       <!-- Modal content-->
       <div class="modal-content" id="myModal">
 
-      <form id="test_form" >
+      <form id="employee_form" >
         <div class="modal-header">
+           Add Employee
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body">
             <div class="form-group">
-              <label for="fname">First Name:</label>
-              <input type="text" id="fname" name="fname" class="form-control"></input>
+              <label for="name">First Name:</label>
+              <input type="text" id="name" name="name" class="form-control"></input>
             </div>
             <div>
-              <label for="lname">Last Name:</label>
-              <input type="text" id="lname" name="lname" class="form-control"></input>
+              <label for="surname">Last Name:</label>
+              <input type="text" id="surname" name="surname" class="form-control"></input>
             </div>
             <div>
               <label for="user_email">Email:</label>
-              <input type="email"  id="user_email" name="custom_email" class="form-control"></input>
+              <input type="email"  id="user_email" name="user_email" class="form-control"></input>
             </div>
             <div>
-              <label for="psword">Password:</label>
-              <input type="password" id="psword" name="psword" class="form-control"></input>
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" class="form-control"></input>
             </div>
             <div>
               <label for="phone">Phone:</label>
@@ -77,23 +78,23 @@
           <input type="text" id="id" name="id" class="form-control" hidden></input>
             <div class="form-group">
               <label for="fname">First Name:</label>
-              <input type="text" id="fname" name="fname" class="form-control"></input>
+              <input type="text" id="fname" name="fname" class="form-control" required></input>
             </div>
             <div>
               <label for="lname">Last Name:</label>
-              <input type="text" id="lname" name="lname" class="form-control"></input>
+              <input type="text" id="lname" name="lname" class="form-control" required></input>
             </div>
             <div>
               <label for="user_email">Email:</label>
-              <input type="email"  id="user_email" name="custom_email" class="form-control"></input>
+              <input type="email"  id="user_email" name="custom_email" class="form-control" required></input>
             </div>
             <div>
               <label for="psword">Password:</label>
-              <input type="password" id="psword" name="psword" class="form-control"></input>
+              <input type="password" id="psword" name="psword" class="form-control" required></input>
             </div>
             <div>
               <label for="phone">Phone:</label>
-              <input type="phone" id="phone" name="phone" class="form-control"></input>
+              <input type="phone" id="phone" name="phone" class="form-control" required></input>
             </div>
           </div>
           <div class="error"><span></span></div>
@@ -101,135 +102,26 @@
           <button type="button" class="btn btn-default" id="close_button" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-success">Submit</button>
         </div>
-          <div id="messageBox1"><ul></ul></div>
       </form>
       </div>
       </div>
     </div>
-
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Surname</th>
-      <th scope="col">Phone Number</th>
-      <th scope="col">Email</th>
-      <th scope="col">Delete</th>
-      <th scope="col">Info</th>
-      <th scope="col">Update</th>
-    </tr>
-  </thead>
-  <tbody id="table_content">
-  </tbody>
-</table>
-  </div>
+    
+  <table id="employee_table"></table>
+</div>
 <script type="text/javascript">
-  jQuery.validator.addMethod("custom_email", function(value, element) {
-   return this.optional(element) || /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i.test(value);
-  }, "Please enter valid email address!");
+Employee.get_employees();
 
-$("#test_form").validate({
- focusCleanup: true,
- errorElement: "em",
-rules: {
-  fname: 'required',
-  lname: 'required',
-  psword: {
-    required: true,
-    minlength: 2,
-    maxlength: 10
+$("#employee_form").validate({
+  submitHandler: function(form, validator) {
+    $.post('rest/employee', $("#employee_form").serialize()).done(function(data){
+     toastr.success(data);
+     $('#myModal').modal('toggle');
+     Employee.get_employees();
+   }).fail(function(data){
+      toastr.error(data);
+    });
   }
-},
-messages: {
-  fname: 'This field is required',
-  lname: 'This field is required',
-  user_email: 'Enter a valid email',
-  psword: {
-    minlength: 'Password must be at least 8 characters long'
-  }
-},
-highlight: function(element, errorClass) {
-  $(element).fadeOut(function() {
-    $(element).fadeIn();
-  });
-},
-errorContainer: "#messageBox1, #messageBox2",
-errorLabelContainer: "#messageBox1 ul",
-wrapper: "li",
-submitHandler: function(form, validator) {
-  $.post('rest/students', $("#test_form").serialize()).done(function(){
-       toastr.success('Student added');
-       $('#myModal').modal('toggle');
-       get_students();
-  }).fail(function(){
-    toastr.error('Student not added');
-  });
-},
-invalidHandler: function(event, validator) {
-  var errors = validator.numberOfInvalids();
-  toastr.error("Error");
-  if (errors) {
-    var message = errors == 1
-      ? 'You missed 1 field.'
-      : 'You missed ' + errors + ' fields.';
-    $("div.error span").html(message);
-    $("div.error").show();
-  } else {
-    $("div.error").hide();
-  }
- }
 });
 
-
-$("#edit_form").validate({
- focusCleanup: true,
- errorElement: "em",
-rules: {
-  fname: 'required',
-  lname: 'required',
-  psword: {
-    required: true,
-    minlength: 2,
-    maxlength: 10
-  }
-},
-messages: {
-  fname: 'This field is required',
-  lname: 'This field is required',
-  user_email: 'Enter a valid email',
-  psword: {
-    minlength: 'Password must be at least 8 characters long'
-  }
-},
-highlight: function(element, errorClass) {
-  $(element).fadeOut(function() {
-    $(element).fadeIn();
-  });
-},
-errorContainer: "#messageBox1, #messageBox2",
-errorLabelContainer: "#messageBox1 ul",
-wrapper: "li",
-submitHandler: function(form, validator) {
-  $.post('rest/student', $("#edit_form").serialize()).done(function(){
-    toastr.success("Student has been updated");
-    $("#editModal").modal('toggle');
-    get_students();
-  }).fail(function(){
-    toastr.error("Student is not updated.");
-  });
-},
-invalidHandler: function(event, validator) {
-  var errors = validator.numberOfInvalids();
-  toastr.error("Error");
-  if (errors) {
-    var message = errors == 1
-      ? 'You missed 1 field.'
-      : 'You missed ' + errors + ' fields.';
-    $("div.error span").html(message);
-    $("div.error").show();
-  } else {
-    $("div.error").hide();
-  }
- }
-});
 </script>

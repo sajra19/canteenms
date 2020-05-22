@@ -81,14 +81,23 @@
               '</li>'+
               '<li class="nav-item mx-0 mx-lg-1">'+
                 '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#checkout">Check Out</a>'+
+              '</li>'+
+              '<li class="nav-item mx-0 mx-lg-1">'+
+                '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#orders">Orders</a>'+
+              '</li>'+
+              '<li class="nav-item mx-0 mx-lg-1">'+
+                '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#history">Hisotry</a>'+
               '</li>';
+
 
     $("#tabs").html(nav);
 
     var main = '<section id="error_404"><h1>Page not found</h1></section>'+
                 '<section id="home">Home</section>'+
                 '<section id="menu">Menu</section>'+
-                '<section id="checkout">Checkout</section>';
+                '<section id="checkout">Checkout</section>'+
+                '<section id="orders">Orders</section>'+
+                '<section id="history">History</section>';
     $("#spapp").html(main);
   }else if(user.data.id == 22){
     var nav = '<li class="nav-item mx-0 mx-lg-1">'+
@@ -99,6 +108,9 @@
               '</li>'+
               '<li class="nav-item mx-0 mx-lg-1">'+
                 '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#login">Login</a>'+
+              '</li>'+
+              '<li class="nav-item mx-0 mx-lg-1">'+
+                '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#statistics">Statistics</a>'+
               '</li>';
 
     $("#tabs").html(nav);
@@ -106,7 +118,8 @@
     var main = '<section id="error_404"><h1>Page not found</h1></section>'+
                 '<section id="employee">Employee</section>'+
                 '<section id="admin">Admin</section>'+
-                '<section id="login">Login</section>';
+                '<section id="login">Login</section>'+
+                '<section id="statistics">Statistics</section>';
     $("#spapp").html(main);
   }
   } else {

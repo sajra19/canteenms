@@ -2,7 +2,7 @@
 
 class UserDao extends BaseDao{
 
-  public $table = 'students';
+  public $table = 'users';
 
   public function __construct(){
     parent::__construct($this->table);

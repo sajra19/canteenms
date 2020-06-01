@@ -72,7 +72,7 @@
   if(localStorage.getItem('user_token')){
     var user = Utils.parseJwt(localStorage.getItem('user_token'));
 
-  if(user.data.id != 22){
+  if(!user.data.type){
     var nav = '<li class="nav-item mx-0 mx-lg-1">'+
                 '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#home">Home</a>'+
               '</li>'+
@@ -99,7 +99,7 @@
                 '<section id="orders">Orders</section>'+
                 '<section id="history">History</section>';
     $("#spapp").html(main);
-  }else if(user.data.id == 22){
+  }else if(user.data.type){
     var nav = '<li class="nav-item mx-0 mx-lg-1">'+
                 '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#employee">Employee</a>'+
               '</li>'+

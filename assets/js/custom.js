@@ -35,6 +35,26 @@ $(document).ready(function() {
     load: 'login.html'
   });
 
+  app.route({
+    view: 'orders',
+    load: 'orders.html'
+  });
+
+  app.route({
+    view: 'statistics',
+    load: 'statistics.html'
+  });
+
+  app.route({
+    view: 'history',
+    load: 'history.html'
+  });
+
+  app.route({
+    view: 'logout',
+    load: 'logout.html'
+  });
+
 
   // run app
   app.run();

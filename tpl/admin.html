@@ -24,7 +24,7 @@
       <!-- Modal content-->
       <div class="modal-content" id="myModal">
 
-      <form id="employee_form" >
+      <form id="admin_form" >
         <div class="modal-header">
            Add Employee
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -107,16 +107,16 @@
       </div>
     </div>
 
-  <table id="employee_table"></table>
+  <table id="admin_table"></table>
 <script type="text/javascript">
-Employee.get_employees();
+Admin.get_admin();
 
-$("#employee_form").validate({
+$("#admin_form").validate({
   submitHandler: function(form, validator) {
-    $.post('rest/employee', $("#employee_form").serialize()).done(function(data){
+    $.post('rest/admin', $("#admin_form").serialize()).done(function(data){
      toastr.success(data);
      $('#myModal').modal('toggle');
-     Employee.get_employees();
+     Admin.get_admin();
    }).fail(function(data){
       toastr.error(data);
     });

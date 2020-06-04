@@ -3,7 +3,6 @@ vendor/
 .idea/
 composer.lock
 logs/*
-config/config.php
 tests/build/
 .phpunit.result.cache
 !.htaccess

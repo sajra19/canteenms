@@ -16,8 +16,8 @@ foreach (glob(__DIR__.'/app/routes/*.php') as $route) {
 foreach (glob(__DIR__.'/app/models/*.php') as $model) {
     require_once $model;
 }
-foreach (glob(__DIR__.'/app/dao/*.php') as $model) {
-    require_once $model;
+foreach (glob(__DIR__.'/app/dao/*.php') as $dao) {
+    require_once $dao;
 }
 foreach (glob(__DIR__.'/app/services/*.php') as $model) {
     require_once $model;

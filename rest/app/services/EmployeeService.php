@@ -21,11 +21,20 @@ class EmployeeService {
     }
 
     public function add_employee($employee){
+      $user = [
+        //polje iz baze => polje iz forme
+        'email' => $employee['email'],
+        'password' => $employee['password'],
+        'type' => 'employee'
+      ];
+
+      $user_dao = new UserDao();
+      $user_id = $user_dao->add_user($user);
+
       $employee = [
+        'user_id' => $user_id,
         'name' => $employee['name'],
-        'surname' => $employee['surname'],
-        'email' => $employee['user_email'],
-        'password' => password_hash($employee['password'], PASSWORD_DEFAULT)
+        'surname' => $employee['surname']
       ];
 
       $this->employee_dao->add($employee);

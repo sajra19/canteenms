@@ -1,8 +1,8 @@
 <?php
 
-class EmployeeDao extends BaseDao{
+class CustomerDao extends BaseDao{
 
-  public $table = 'employee';
+  public $table = 'customer';
 
   public function __construct(){
     parent::__construct($this->table);

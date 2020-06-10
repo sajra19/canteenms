@@ -2,7 +2,7 @@
 
 class EmployeeDao extends BaseDao{
 
-  public $table = 'employee';
+  public $table = 'employees';
 
   public function __construct(){
     parent::__construct($this->table);

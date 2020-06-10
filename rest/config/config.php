@@ -49,9 +49,9 @@ define('DB_USER', "sql7341110");
 define('DB_PASS', "iVHrQt9qb1");*/
 
 // mongodb settings
-define('CONNECTION_STRING', "mysql:host=remotemysql.com;dbname=tEYQ0vL2Rn");
-define('DB_USER', "tEYQ0vL2Rn");
-define('DB_PASS', "Xwqg1jEEB0");
+define('CONNECTION_STRING', "mysql:host=127.0.0.1;dbname=canteenms");
+define('DB_USER', "root");
+define('DB_PASS', "password");
 
 
 

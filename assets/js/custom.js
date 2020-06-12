@@ -31,6 +31,11 @@ $(document).ready(function() {
   });
 
   app.route({
+    view: 'employees',
+    load: 'employees.html'
+  });
+
+  app.route({
     view: 'login',
     load: 'login.html'
   });
@@ -49,6 +54,17 @@ $(document).ready(function() {
     view: 'history',
     load: 'history.html'
   });
+
+  app.route({
+    view: 'editmenu',
+    load: 'editmenu.html'
+  });
+
+  app.route({
+    view: 'status',
+    load: 'status.html'
+  });
+
 
   app.route({
     view: 'logout',

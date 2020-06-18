@@ -8,29 +8,31 @@ class UserService {
     }
 
     public function login($user){
-      $db_user = $this->get_user_by_email($user['user_email']);
+      $db_user = $this->get_user_by_email($user['user_email']); 
       $is_admin = false;
       if($db_user){
         //UPDATE PASSWORD VERIFICATION
         if($db_user['password'] == $user['psword']){
-          if($db_user['type'] == 'employee'){
+          if($db_user['type_id'] == 3){
             $employee_dao = new EmployeeDao();
-            $db_user = $employee_dao->get_by_id($db_user['id']);
-          } else if($db_user['type'] == 'customer'){
+            $db_user_data = $employee_dao->get_by_id($db_user['id']);
+          } else if($db_user['type_id'] == 2){
             $customer_dao = new CustomerDao();
-            $db_user = $customer_dao->get_by_id($db_user['id']);
-          } else if($db_user['type'] == 'admin'){
+            $db_user_data = $customer_dao->get_by_id($db_user['id']);
+          } else if($db_user['type_id'] == 1){
             $admin_dao = new AdminDao();
-            $db_user = $admin_dao->get_by_id($db_user['id']);
+            $db_user_data = $admin_dao->get_by_id($db_user['id']);
             $is_admin = true;
           }
+
 
           $token_data = [
             'id' => $db_user['id'],
             'email' => $db_user['email'],
             'name' => $db_user['name'],
-            'is_admin' => $is_admin
-          ];
+            'is_admin' => $is_admin,
+            'type_id' => $db_user['type_id']
+           ];
 
           $jwt = Auth::encode_jwt($token_data);
           Flight::json(['user_token' => $jwt]);

@@ -71,83 +71,84 @@
 <script>
   if(localStorage.getItem('user_token')){
     var user = Utils.parseJwt(localStorage.getItem('user_token'));
+    if(user != null){
+      if(user.data.type_id == 2){
+        var nav = '<li class="nav-item mx-0 mx-lg-1">'+
+                    '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#home">Home</a>'+
+                  '</li>'+
+                  '<li class="nav-item mx-0 mx-lg-1">'+
+                    '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#menu">Menu</a>'+
+                  '</li>'+
+                  '<li class="nav-item mx-0 mx-lg-1">'+
+                    '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#checkout">Check Out</a>'+
+                  '</li>'+
+                  '<li class="nav-item mx-0 mx-lg-1">'+
+                    '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#history">Hisotry</a>'+
+                  '</li>';
 
-  if(!user.data.type){
-    var nav = '<li class="nav-item mx-0 mx-lg-1">'+
-                '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#home">Home</a>'+
-              '</li>'+
-              '<li class="nav-item mx-0 mx-lg-1">'+
-                '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#menu">Menu</a>'+
-              '</li>'+
-              '<li class="nav-item mx-0 mx-lg-1">'+
-                '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#checkout">Check Out</a>'+
-              '</li>'+
-              '<li class="nav-item mx-0 mx-lg-1">'+
-                '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#history">Hisotry</a>'+
-              '</li>';
 
+        $("#tabs").html(nav);
 
-    $("#tabs").html(nav);
+        var main = '<section id="home">Home</section>'+
+                    '<section id="menu">Menu</section>'+
+                    '<section id="checkout">Checkout</section>'+
+                    '<section id="history">History</section>';
+        $("#spapp").html(main);
 
-    var main = '<section id="error_404"><h1>Page not found</h1></section>'+
-                '<section id="home">Home</section>'+
-                '<section id="menu">Menu</section>'+
-                '<section id="checkout">Checkout</section>'+
-                '<section id="history">History</section>';
-    $("#spapp").html(main);
+        // za employee
+      }else if(user.data.type_id == 3){
+        var nav = '<li class="nav-item mx-0 mx-lg-1">'+
+                    '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#employee">Employee</a>'+
+                  '</li>'+
+                  '<li class="nav-item mx-0 mx-lg-1">'+
+                    '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#orders">Orders</a>'+
+                  '</li>'+
+                  '<li class="nav-item mx-0 mx-lg-1">'+
+                  //stanje dostupnosti
+                    '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#status">Status</a>'+
+                  '</li>'+
+                  '<li class="nav-item mx-0 mx-lg-1">'+
+                    '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#logout">Logout</a>'+
+                  '</li>';
 
-    // za employee
-  }else if(user.data.type){
-    var nav = '<li class="nav-item mx-0 mx-lg-1">'+
-                '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#employee">Employee</a>'+
-              '</li>'+
-              '<li class="nav-item mx-0 mx-lg-1">'+
-                '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#orders">Orders</a>'+
-              '</li>'+
-              '<li class="nav-item mx-0 mx-lg-1">'+
-              //stanje dostupnosti
-                '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#status">Status</a>'+
-              '</li>'+
-              '<li class="nav-item mx-0 mx-lg-1">'+
-                '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#logout">Logout</a>'+
-              '</li>';
+        $("#tabs").html(nav);
 
-    $("#tabs").html(nav);
+        var main = '<section id="employee">Employee</section>'+
+                    '<section id="orders">Orders</section>'+
+                    '<section id="status">Status</section>'+
+                    '<section id="logout">Logout</section>';
+        $("#spapp").html(main);
+      }
+      // za admina
+      else if(user.data.type_id == 1){
+      var nav = '<li class="nav-item mx-0 mx-lg-1">'+ //isto ko employee
+                  '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#orders">Orders</a>'+
+                '</li>'+
+                '<li class="nav-item mx-0 mx-lg-1">'+
+                  '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#employees">Employees</a>'+
+                '</li>'+
+                '<li class="nav-item mx-0 mx-lg-1">'+
+                  '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#editmenu">Edit Menu</a>'+
+                '</li>'+
+                '<li class="nav-item mx-0 mx-lg-1">'+
+                  '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#statistics">Statistics</a>'+
+                '</li>'+
+                '<li class="nav-item mx-0 mx-lg-1">'+
+                  '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#logout">Logout</a>'+
+                '</li>';
 
-    var main = '<section id="error_404"><h1>Page not found</h1></section>'+
-                '<section id="employee">Employee</section>'+
-                '<section id="orders">Orders</section>'+
-                '<section id="status">Status</section>'+
-                '<section id="logout">Logout</section>';
-    $("#spapp").html(main);
-  }
-  // za admina
-}else if(user.data.type){
-  var nav = '<li class="nav-item mx-0 mx-lg-1">'+ //isto ko employee
-              '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#orders">Orders</a>'+
-            '</li>'+
-            '<li class="nav-item mx-0 mx-lg-1">'+
-              '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#employees">Employees</a>'+
-            '</li>'+
-            '<li class="nav-item mx-0 mx-lg-1">'+
-              '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#editmenu">Edit Menu</a>'+
-            '</li>'+
-            '<li class="nav-item mx-0 mx-lg-1">'+
-              '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#statistics">Statistics</a>'+
-            '</li>'+
-            '<li class="nav-item mx-0 mx-lg-1">'+
-              '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#logout">Logout</a>'+
-            '</li>';
+      $("#tabs").html(nav);
 
-  $("#tabs").html(nav);
-
-  var main = '<section id="error_404"><h1>Page not found</h1></section>'+
-              '<section id="orders">Orders</section>'+
-              '<section id="employees">Employees</section>'+
-              '<section id="editmenu">Edit Menu</section>'+
-              '<section id="statistics">Statistics</section>'+
-              '<section id="logout">Logout</section>';
-  $("#spapp").html(main);
+      var main = '<section id="orders">Orders</section>'+
+                  '<section id="employees">Employees</section>'+
+                  '<section id="editmenu">Edit Menu</section>'+
+                  '<section id="statistics">Statistics</section>'+
+                  '<section id="logout">Logout</section>';
+      $("#spapp").html(main);
+      }
+    } else {
+      window.location="login.html";
+    }
   } else {
     window.location="login.html";
   }

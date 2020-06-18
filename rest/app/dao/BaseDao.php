@@ -6,7 +6,7 @@ class BaseDao{
   private $table_name;
 
   public function __construct($table_name){
-    $this->pdo = new PDO("mysql:host=remotemysql.com;dbname=tEYQ0vL2Rn", "tEYQ0vL2Rn", "Xwqg1jEEB0");
+    $this->pdo = new PDO("mysql:host=localhost:3307;dbname=canteenms", "root", "80sarajevo");
     $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $this->table_name = $table_name;
   }

@@ -75,17 +75,9 @@ messages: {
     minlength: 'Password must be at least 8 characters long'
   }
 },
-highlight: function(element, errorClass) {
-  $(element).fadeOut(function() {
-    $(element).fadeIn();
-  });
-},
-errorContainer: "#messageBox1, #messageBox2",
-errorLabelContainer: "#messageBox1 ul",
-wrapper: "li",
 submitHandler: function(form, validator) {
   $.post('rest/login', $("#login_form").serialize()).done(function(data){
-    toastr.success('Success');
+    toastr.success('Welcome');
     window.localStorage.setItem("user_token", data.user_token);
     window.location = "index.html";
   }).fail(function(){

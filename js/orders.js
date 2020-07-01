@@ -22,5 +22,14 @@ var Orders = {
      }, function(data){console.log(data);
        toastr.error('Order was not deleted');
      })
+   },
+
+   finish_order : function(id){
+     RestClient.PUT('orders/',{id:id} function(data){
+       toastr.success(data);
+       Orders.get_orders();
+     }, function(data){console.log(data);
+       toastr.error('Order was not updated');
+     })
    }
 }

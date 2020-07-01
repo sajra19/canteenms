@@ -16,99 +16,9 @@
 <div style="margin-top:10%; margin-left: 2%; margin-right:2%">
   <h2>Manage Orders</h2>
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Form</button>
-
-    <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content" id="myModal">
-
-      <form id="orders_form" >
-        <div class="modal-header">
-           Add Order
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"></h4>
-        </div>
-        <div class="modal-body">
-
-            <div>
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name" class="form-control"></input>
-            </div>
-            <div>
-              <label for="amount">Amount:</label>
-              <input type="number"  id="amount" name="amount" class="form-control"></input>
-            </div>
-            <div>
-              <label for="price">Price:</label>
-              <input type="number" id="price" name="price" class="form-control"></input>
-            </div>
-          </div>
-          <div class="error"><span></span></div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" id="close_button" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-success">Submit</button>
-        </div>
-      </form>
-      </div>
-      </div>
-    </div>
-
-    <!-- Modal -->
-  <div class="modal fade" id="editModal" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content" id="editModal">
-
-      <form id="edit_form" >
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"></h4>
-        </div>
-        <div class="modal-body">
-          <input type="text" id="id" name="id" class="form-control" hidden></input>
-            <div class="form-group">
-              <label for="order_id">ID:</label>
-              <input type="text" id="order_id" name="order_id" class="form-control" required></input>
-            </div>
-            <div>
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name" class="form-control" required></input>
-            </div>
-            <div>
-              <label for="amount">Amount:</label>
-              <input type="number"  id="amount" name="amount" class="form-control" required></input>
-            </div>
-            <div>
-              <label for="price">Price:</label>
-              <input type="number" id="price" name="price" class="form-control" required></input>
-            </div>
-          </div>
-          <div class="error"><span></span></div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" id="close_button" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-success">Submit</button>
-        </div>
-      </form>
-      </div>
-      </div>
-    </div>
 
   <table id="orders_table"></table>
 <script type="text/javascript">
 Orders.get_orders();
-
-$("#orders_form").validate({
-  submitHandler: function(form, validator) {
-    $.post('rest/orders', $("#orders_form").serialize()).done(function(data){
-     toastr.success(data);
-     $('#myModal').modal('toggle');
-     Orders.get_orders();
-   }).fail(function(data){
-      toastr.error(data);
-    });
-  }
-});
 
 </script>

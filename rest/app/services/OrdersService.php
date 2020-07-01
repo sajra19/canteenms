@@ -11,6 +11,7 @@ class OrdersService {
       $orders = $this->orders_dao->get_all();
       foreach ($orders as $idx => $orders){
         $orders[$idx]['delete_orders'] = '<a class="btn btn-xs btn-outline red" onclick="Orders.delete_orders('.$orders['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>';
+        $orders[$idx]['finish_orders'] = '<a class="btn btn-xs btn-outline red" onclick="Orders.finish_orders('.$orders['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Finish</a>';
       }
 
       return $orders;

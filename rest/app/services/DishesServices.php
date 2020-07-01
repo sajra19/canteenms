@@ -32,9 +32,8 @@ class DishesService {
       $user_id = $user_dao->add_user($user);
 
       $dish = [
-        'id' => $id,
         'name' => $dish['name'],
-        'price' => $dish['price']
+        'price' => $dish['price'],
         'status' => $dish['status']
       ];
 

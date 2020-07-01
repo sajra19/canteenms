@@ -15,6 +15,9 @@ HttpLogger::create('file', 'full+h', LOG_FILE, false);
 
 Flight::register('employee_service', 'EmployeeService');
 Flight::register('user_service', 'UserService');
+Flight::register('orders_service', 'OrdersService');
+Flight::register('dish_service', 'DishesService');
+
 
 
 /* Flight middleware | Logging */

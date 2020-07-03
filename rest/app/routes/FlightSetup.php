@@ -17,6 +17,7 @@ Flight::register('employee_service', 'EmployeeService');
 Flight::register('user_service', 'UserService');
 Flight::register('orders_service', 'OrdersService');
 Flight::register('dish_service', 'DishesService');
+Flight::register('menu_service', 'MenuService');
 
 
 

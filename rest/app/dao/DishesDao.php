@@ -1,6 +1,6 @@
 <?php
 
-class DishDao extends BaseDao{
+class DishesDao extends BaseDao{
 
   public $table = 'dishes';
 

@@ -1,24 +1,3 @@
-
-<style media="screen">
-.img{ width:90%; height:auto;}
-.content-part-3{ padding:30px 0px !important; float:left;}
-.content-part-3-inner{ padding:10px 0px;}
-.content-part-3-right-h4{ font-weight:600; color:#000; padding:0px;}
-.margin_5{ margin:5px 0px; float:left;}
-.margin_p3{ margin:10px 0px 5px;}
-.price{color:#000; padding:5px 0px; font-weight:bold; font-size:15px;}
-.green{ color:#7db549; font-weight:bold; font-size:16px;}
-.order-now{ color:#FFF; background:#7db549; padding:5px 15px; border-radius:2px; text-decoration:none; margin:5px auto;}
-.order-now:hover{background:#689242;}
-@media only screen and (min-width:320px) and (max-width:480px){
-.img{ width:100%;}
-}
-@media only screen and (min-width:600px) and (max-width:768px){
-.img{ width:96%; border-radius:3px;}
-.content-part-3-right-h4{ font-weight:600; color:#000; padding:5px 0px 0px;}
-}
-</style>
-<!-- For demo purpose -->
 <div class="row text-center text-white mb-5">
   <div class="col-lg-7 mx-auto">
     <p class="lead mb-0">Create an elegant product list using Bootstrap 4 list group</p>
@@ -27,189 +6,113 @@
     </p>
   </div>
 </div>
-<div class="row">
-	<div class="content-part-3">
-        <div class="col-md-6 col-sm-12 col-xs-12">
-        	<div class="row content-part-3-inner">
-                <div class="col-md-5 col-sm-5 col-xs-12" align="center">
-                    <img src="img/menu/1.jpg" class="img-responsive img" alt="Menu Item">
-                </div>
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="content-part-3-right-h4">Lorem Ipsum</div>
-                    <div class="price">Price : <i class="green"><span class="fa fa-inr"></span>55.00/-</i></div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <div class="margin_p3"><a href="#checkout" class="order-now">Order Now</a></div>
-                </div>
-            </div>
+
+<style>
+.error{
+  color: red;
+}
+</style>
+
+<div style="margin-top:10%; margin-left: 2%; margin-right:2%">
+  <h2>Manage Menu</h2>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Form</button>
+
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" id="myModal">
+
+      <form id="dishes_form" >
+        <div class="modal-header">
+           Add Menu Item
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
         </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-        	<div class="row content-part-3-inner">
-                <div class="col-md-5 col-sm-5 col-xs-12" align="center">
-                    <img src="img/menu/1.jpg" class="img-responsive img" alt="Menu Item">
-                </div>
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="content-part-3-right-h4">Lorem Ipsum</div>
-                    <div class="price">Price : <i class="green"><span class="fa fa-inr"></span>150.00/-</i></div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <div class="margin_p3"><a href="#!" class="order-now">Order Now</a></div>
-                </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" class="form-control"></input>
             </div>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-        	<div class="row content-part-3-inner">
-                <div class="col-md-5 col-sm-5 col-xs-12" align="center">
-                    <img src="img/menu/1.png" class="img-responsive img" alt="Menu Item">
-                </div>
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="content-part-3-right-h4">Lorem Ipsum</div>
-                    <div class="price">Price : <i class="green"><span class="fa fa-inr"></span>220.00/-</i></div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <div class="margin_p3"><a href="#!" class="order-now">Order Now</a></div>
-                </div>
+            <div>
+              <label for="price">Price:</label>
+              <input type="text" id="price" name="price" class="form-control"></input>
             </div>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-        	<div class="row content-part-3-inner">
-                <div class="col-md-5 col-sm-5 col-xs-12" align="center">
-                    <img src="img/menu/1.jpeg" class="img-responsive img" alt="Menu Item">
-                </div>
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="content-part-3-right-h4">Lorem Ipsum</div>
-                    <div class="price">Price : <i class="green"><span class="fa fa-inr"></span>90.00/-</i></div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <div class="margin_p3"><a href="#!" class="order-now">Order Now</a></div>
-                </div>
+            <div>
+              <label for="description">Description</label>
+              <input type="text"  id="description" name="description" class="form-control"></input>
             </div>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-        	<div class="row content-part-3-inner">
-                <div class="col-md-5 col-sm-5 col-xs-12" align="center">
-                    <img src="img/menu/1.jpg" class="img-responsive img" alt="Menu Item">
-                </div>
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="content-part-3-right-h4">Lorem Ipsum</div>
-                    <div class="price">Price : <i class="green"><span class="fa fa-inr"></span>250.00/-</i></div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <div class="margin_p3"><a href="#!" class="order-now">Order Now</a></div>
-                </div>
+            <div>
+              <label for="status">Status:</label>
+              <input type="text" id="status" name="status" class="form-control"></input>
             </div>
+          </div>
+          <div class="error"><span></span></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="close_button" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success">Submit</button>
         </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-        	<div class="row content-part-3-inner">
-                <div class="col-md-5 col-sm-5 col-xs-12" align="center">
-                    <img src="img/menu/1.jpg" class="img-responsive img" alt="Menu Item">
-                </div>
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="content-part-3-right-h4">Lorem Ipsum</div>
-                    <div class="price">Price : <i class="green"><span class="fa fa-inr"></span>300.00/-</i></div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <div class="margin_p3"><a href="#!" class="order-now">Order Now</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-        	<div class="row content-part-3-inner">
-                <div class="col-md-5 col-sm-5 col-xs-12" align="center">
-                    <img src="img/menu/1.jpg" class="img-responsive img" alt="Menu Item">
-                </div>
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="content-part-3-right-h4">Lorem Ipsum</div>
-                    <div class="price">Price : <i class="green"><span class="fa fa-inr"></span>270.00/-</i></div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <div class="margin_p3"><a href="#!" class="order-now">Order Now</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-        	<div class="row content-part-3-inner">
-                <div class="col-md-5 col-sm-5 col-xs-12" align="center">
-                    <img src="img/menu/1.jpg" class="img-responsive img" alt="Menu Item">
-                </div>
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="content-part-3-right-h4">Lorem Ipsum</div>
-                    <div class="price">Price : <i class="green"><span class="fa fa-inr"></span>325.00/-</i></div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <div class="margin_p3"><a href="#!" class="order-now">Order Now</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-        	<div class="row content-part-3-inner">
-                <div class="col-md-5 col-sm-5 col-xs-12" align="center">
-                    <img src="img/menu/1.jpg" class="img-responsive img" alt="Menu Item">
-                </div>
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="content-part-3-right-h4">Lorem Ipsum</div>
-                    <div class="price">Price : <i class="green"><span class="fa fa-inr"></span>455.00/-</i></div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <div class="margin_p3"><a href="#!" class="order-now">Order Now</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-        	<div class="row content-part-3-inner">
-                <div class="col-md-5 col-sm-5 col-xs-12" align="center">
-                    <img src="img/menu/1.jpg" class="img-responsive img" alt="Menu Item">
-                </div>
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="content-part-3-right-h4">Lorem Ipsum</div>
-                    <div class="price">Price : <i class="green"><span class="fa fa-inr"></span>180.00/-</i></div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <div class="margin_p3"><a href="#!" class="order-now">Order Now</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-        	<div class="row content-part-3-inner">
-                <div class="col-md-5 col-sm-5 col-xs-12" align="center">
-                    <img src="img/menu/1.jpg" class="img-responsive img" alt="Menu Item">
-                </div>
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="content-part-3-right-h4">Lorem Ipsum</div>
-                    <div class="price">Price : <i class="green"><span class="fa fa-inr"></span>200.00/-</i></div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <div class="margin_p3"><a href="#!" class="order-now">Order Now</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-        	<div class="row content-part-3-inner">
-                <div class="col-md-5 col-sm-5 col-xs-12" align="center">
-                    <img src="img/menu/1.jpg" class="img-responsive img" alt="Menu Item">
-                </div>
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="content-part-3-right-h4">Lorem Ipsum</div>
-                    <div class="price">Price : <i class="green"><span class="fa fa-inr"></span>155.00/-</i></div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <div class="margin_p3"><a href="#!" class="order-now">Order Now</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-        	<div class="row content-part-3-inner">
-                <div class="col-md-5 col-sm-5 col-xs-12" align="center">
-                    <img src="img/menu/1.jpg" class="img-responsive img" alt="Menu Item">
-                </div>
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="content-part-3-right-h4">Lorem Ipsum</div>
-                    <div class="price">Price : <i class="green"><span class="fa fa-inr"></span>499.00/-</i></div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <div class="margin_p3"><a href="#!" class="order-now">Order Now</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-        	<div class="row content-part-3-inner">
-                <div class="col-md-5 col-sm-5 col-xs-12" align="center">
-                    <img src="img/menu/1.jpg" class="img-responsive img" alt="Menu Item">
-                </div>
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="content-part-3-right-h4">Lorem Ipsum</div>
-                    <div class="price">Price : <i class="green"><span class="fa fa-inr"></span>99.00/-</i></div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <div class="margin_p3"><a href="#!" class="order-now">Order Now</a></div>
-                </div>
-            </div>
-        </div>
+          <div id="messageBox1"><ul></ul></div>
+      </form>
+      </div>
+      </div>
     </div>
-</div>
+
+    <!-- Modal -->
+  <div class="modal fade" id="editModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" id="editModal">
+
+      <form id="edit_form" >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="id" name="id" class="form-control" hidden></input>
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" class="form-control" required></input>
+            </div>
+            <div>
+              <label for="price">Price:</label>
+              <input type="text" id="price" name="price" class="form-control" required></input>
+            </div>
+            <div>
+              <label for="user_email">Description:</label>
+              <input type="text"  id="description" name="description" class="form-control" required></input>
+            </div>
+            <div>
+              <label for="status">Status</label>
+              <input type="text" id="status" name="status" class="form-control" required></input>
+            </div>
+          </div>
+          <div class="error"><span></span></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="close_button" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+      </form>
+      </div>
+      </div>
+    </div>
+
+  <table id="dishes_table"></table>
+<script type="text/javascript">
+Dishes.get_dishes();
+
+$("#dishes_form").validate({
+  submitHandler: function(form, validator) {
+    $.post('rest/dishes', $("#dishes_form").serialize()).done(function(data){
+     toastr.success(data);
+     $('#myModal').modal('toggle');
+     Dishes.get_dishes();
+   }).fail(function(data){
+      toastr.error(data);
+    });
+  }
+});
+
+</script>

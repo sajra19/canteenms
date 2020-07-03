@@ -14,7 +14,7 @@
 */
 Flight::route('GET /dishes', function ($route) {
   //  $user_data = Auth::decode_jwt_admin($route);
-    $dishes = Flight::dish_service()->get_dish();
+    $dishes = Flight::dishes_service()->get_dishes();
     Flight::json($dishes);
 }, true);
 
@@ -26,9 +26,9 @@ Flight::route('GET /dishes', function ($route) {
  *     summary="Add new employee",
  * )
  */
-Flight::route('POST /dish', function ($route) {
+Flight::route('POST /dishes', function ($route) {
     //$user_data = Auth::decode_jwt_admin($route);
-    Flight::dish_service()->add_dish(Flight::request()->data->getData());
+    Flight::dishes_service()->add_dishes(Flight::request()->data->getData());
     Flight::json('Dish has been added');
 }, true);
 
@@ -48,8 +48,8 @@ Flight::route('POST /dish', function ($route) {
  *     ),
  * )
  */
-Flight::route("DELETE /dish/@id", function ($id, $route) {
+Flight::route("DELETE /dishes/@id", function ($id, $route) {
   //  $user_data = Auth::decode_jwt_admin($route);
-    Flight::dish_service()->delete_dish($id);
+    Flight::dishes_service()->delete_dishes($id);
     Flight::json('Dish has been deleted');
 }, true);

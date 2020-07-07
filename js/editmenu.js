@@ -5,10 +5,10 @@ var Menu = {
         [
         {'data':'id', 'title': 'ID'},
         {'data':'name','title': 'Name'},
-        {'data':'description', 'title': 'Description'},
         {'data':'price', 'title': 'Price'},
+        {'data':'description', 'title': 'Description'},
         {'data':'status', 'title': 'Status'},
-        {'data':'delete_order', 'title': 'Delete'}
+        {'data':'delete_menu', 'title': 'Delete'}
       ], data);
     }, function(data){
       toastr.error(data.responseText);
@@ -20,16 +20,7 @@ var Menu = {
        toastr.success(data);
        Menu.get_menu();
      }, function(data){console.log(data);
-       toastr.error('Menu item was not deleted');
-     })
-   },
-
-   finish_order : function(id){
-     RestClient.PUT('menu/',{id:id} function(data){
-       toastr.success(data);
-       Menu.get_menu();
-     }, function(data){console.log(data);
-       toastr.error('Menu was not updated');
+       toastr.error('Mwnu was not deleted');
      })
    }
 }

@@ -74,10 +74,11 @@
   <main id="spapp" role="main"></main>
 </body>
 <script>
-  if(localStorage.getItem('user_token')){
-    var user = Utils.parseJwt(localStorage.getItem('user_token'));
+//  if(localStorage.getItem('user_token')){
+    var user = '';//Utils.parseJwt(localStorage.getItem('user_token'));
+    var id = 2;
     if(user != null){
-      if(user.data.type_id == 2){
+      if(id == 2){ //customer
         var nav = '<li class="nav-item mx-0 mx-lg-1">'+
                     '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#home">Home</a>'+
                   '</li>'+
@@ -101,7 +102,7 @@
         $("#spapp").html(main);
 
         // za employee
-      }else if(user.data.type_id == 3){
+      }else if(id == 3){
         var nav = '<li class="nav-item mx-0 mx-lg-1">'+
                     '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#orders">Orders</a>'+
                   '</li>'+
@@ -122,7 +123,7 @@
         $("#spapp").html(main);
       }
       // za admina
-      else if(user.data.type_id == 1){
+      else if(id == 1){
       var nav = '<li class="nav-item mx-0 mx-lg-1">'+ //isto ko employee
                   '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#orders">Orders</a>'+
                 '</li>'+
@@ -151,8 +152,8 @@
     } else {
       window.location="login.html";
     }
-  } else {
-    window.location="login.html";
-  }
+//  } else {
+//    window.location="login.html";
+//  }
 </script>
 </html>

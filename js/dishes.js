@@ -5,8 +5,8 @@ var Dishes = {
         [
         {'data':'id', 'title': 'ID'},
         {'data':'name','title': 'Name'},
-        {'data':'price', 'title': 'Price'},
         {'data':'description', 'title': 'Description'},
+        {'data':'price', 'title': 'Price'},
         {'data':'status', 'title': 'Status'},
         {'data':'delete_dishes', 'title': 'Delete'}
       ], data);
@@ -20,7 +20,16 @@ var Dishes = {
        toastr.success(data);
        Dishes.get_dishes();
      }, function(data){console.log(data);
-       toastr.error('Dish was not deleted');
+       toastr.error('Item was not deleted');
+     })
+   },
+
+   finish_order : function(id){
+     RestClient.PUT('dishes/',{id:id} function(data){
+       toastr.success(data);
+       Dishes.get_dishes();
+     }, function(data){console.log(data);
+       toastr.error('Dish was not updated');
      })
    }
 }

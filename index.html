@@ -74,10 +74,11 @@
   <main id="spapp" role="main"></main>
 </body>
 <script>
-  if(localStorage.getItem('user_token')){
-    var user = Utils.parseJwt(localStorage.getItem('user_token'));
+//  if(localStorage.getItem('user_token')){
+    var user = '';//Utils.parseJwt(localStorage.getItem('user_token'));
+    var id = 1;
     if(user != null){
-      if(user.data.type_id == 2){
+      if(id == 2){ //customer
         var nav = '<li class="nav-item mx-0 mx-lg-1">'+
                     '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#home">Home</a>'+
                   '</li>'+
@@ -88,7 +89,7 @@
                     '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#checkout">Check Out</a>'+
                   '</li>'+
                   '<li class="nav-item mx-0 mx-lg-1">'+
-                    '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#history">Hisotry</a>'+
+                    '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#logout">Logout</a>'+
                   '</li>';
 
 
@@ -97,17 +98,16 @@
         var main = '<section id="home">Home</section>'+
                     '<section id="menu">Menu</section>'+
                     '<section id="checkout">Checkout</section>'+
-                    '<section id="history">History</section>';
+                    '<section id="logout">Logout</section>';
         $("#spapp").html(main);
 
         // za employee
-      }else if(user.data.type_id == 3){
+      }else if(id == 3){
         var nav = '<li class="nav-item mx-0 mx-lg-1">'+
                     '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#orders">Orders</a>'+
                   '</li>'+
                   '<li class="nav-item mx-0 mx-lg-1">'+
-                  //stanje dostupnosti
-                    '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#status">Status</a>'+
+                    '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#editmenu">Edit Menu</a>'+
                   '</li>'+
                   '<li class="nav-item mx-0 mx-lg-1">'+
                     '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#logout">Logout</a>'+
@@ -117,12 +117,12 @@
 
         var main =
                     '<section id="orders">Orders</section>'+
-                    '<section id="status">Status</section>'+
+                  '<section id="editmenu">Edit Menu</section>'+
                     '<section id="logout">Logout</section>';
         $("#spapp").html(main);
       }
       // za admina
-      else if(user.data.type_id == 1){
+      else if(id == 1){
       var nav = '<li class="nav-item mx-0 mx-lg-1">'+ //isto ko employee
                   '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#orders">Orders</a>'+
                 '</li>'+
@@ -133,9 +133,6 @@
                   '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#editmenu">Edit Menu</a>'+
                 '</li>'+
                 '<li class="nav-item mx-0 mx-lg-1">'+
-                  '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#statistics">Statistics</a>'+
-                '</li>'+
-                '<li class="nav-item mx-0 mx-lg-1">'+
                   '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#logout">Logout</a>'+
                 '</li>';
 
@@ -144,15 +141,14 @@
       var main = '<section id="orders">Orders</section>'+
                   '<section id="employee">Employee</section>'+
                   '<section id="editmenu">Edit Menu</section>'+
-                  '<section id="statistics">Statistics</section>'+
                   '<section id="logout">Logout</section>';
       $("#spapp").html(main);
       }
     } else {
       window.location="login.html";
     }
-  } else {
-    window.location="login.html";
-  }
+//  } else {
+//    window.location="login.html";
+//  }
 </script>
 </html>

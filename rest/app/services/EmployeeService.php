@@ -23,8 +23,13 @@ class EmployeeService {
     public function add_employee($employee){
       $user = [
         //polje iz baze => polje iz forme
+        'user_id' => $user_id,
+        'name' => $employee['name'],
+        'surname' => $employee['surname'],
         'email' => $employee['email'],
         'password' => $employee['password'],
+        'phone' => $employee['phone'],
+        'status' => $employee['status'],
         'type' => 'employee'
       ];
 
@@ -34,7 +39,7 @@ class EmployeeService {
       $employee = [
         'user_id' => $user_id,
         'name' => $employee['name'],
-        'surname' => $employee['surname']
+        'surname' => $employee['surname'],
       ];
 
       $this->employee_dao->add($employee);

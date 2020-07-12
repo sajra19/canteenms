@@ -2,14 +2,13 @@ var Employee = {
   get_employees : function(){
     RestClient.get("employees",  function(data){
       Utils.datatable("employee_table",
-        [
-        {'data':'id', 'title': 'ID'},
-        {'data':'name','title': 'Name'},
-        {'data':'surname', 'title': 'Surname'},
-        {'data':'email', 'title': 'Email'},
-        {'data':'phone_number', 'title': 'Phone'},
-        {'data':'status', 'title': 'Status'},
-        {'data':'delete_employee', 'title': 'Delete'}
+      [
+        {'data':'id', 'title': 'ID',"defaultContent": ""},
+        {'data':'name','title': 'Name', "defaultContent": ""},
+        {'data':'surname', 'title': 'Surname', "defaultContent": ""},
+        {'data':'email', 'title': 'Email', "defaultContent": ""},
+        {'data':'phone_number', 'title': 'Phone', "defaultContent": ""},
+        {'data':'delete_employee', 'title': 'Delete', "defaultContent": ""}
       ], data);
     }, function(data){
       toastr.error(data.responseText);
@@ -17,9 +16,9 @@ var Employee = {
   },
 
    delete_employee : function(id){
-     RestClient.delete('employee/'+id, function(data){
+     RestClient.delete('employees/'+id, function(data){
        toastr.success(data);
-       Employee.get_students();
+       Employee.get_employees();
      }, function(data){console.log(data);
        toastr.error('Employee was not deleted');
      })

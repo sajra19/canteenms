@@ -26,7 +26,6 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
 
-
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
   <link href="css/freelancer.min.css" rel="stylesheet">
@@ -74,11 +73,15 @@
   <main id="spapp" role="main"></main>
 </body>
 <script>
-//  if(localStorage.getItem('user_token')){
-    var user = '';//Utils.parseJwt(localStorage.getItem('user_token'));
-    var id = 1;
-    if(user != null){
-      if(id == 2){ //customer
+
+ if(localStorage.getItem('user_token')){
+//  var user = '';
+    var user = Utils.parseJwt(localStorage.getItem('user_token'));
+//var id = 1;
+ if(user != null){
+
+      if(user.data.type_id == 2){ //customer
+      //      if(id == 2){
         var nav = '<li class="nav-item mx-0 mx-lg-1">'+
                     '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#home">Home</a>'+
                   '</li>'+
@@ -102,7 +105,8 @@
         $("#spapp").html(main);
 
         // za employee
-      }else if(id == 3){
+    //          }else if(id == 3){
+      }else if(user.data.type_id == 3){
         var nav = '<li class="nav-item mx-0 mx-lg-1">'+
                     '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#orders">Orders</a>'+
                   '</li>'+
@@ -122,7 +126,8 @@
         $("#spapp").html(main);
       }
       // za admina
-      else if(id == 1){
+      else if(user.data.type_id == 1){
+    //      else if(id == 1){
       var nav = '<li class="nav-item mx-0 mx-lg-1">'+ //isto ko employee
                   '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#orders">Orders</a>'+
                 '</li>'+
@@ -143,12 +148,12 @@
                   '<section id="editmenu">Edit Menu</section>'+
                   '<section id="logout">Logout</section>';
       $("#spapp").html(main);
-      }
-    } else {
-      window.location="login.html";
     }
-//  } else {
-//    window.location="login.html";
-//  }
+  } else {
+    window.location="login.html";
+  }
+} else {
+  window.location="login.html";
+}
 </script>
 </html>

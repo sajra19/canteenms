@@ -8,7 +8,7 @@ class UserService {
     }
 
     public function login($user){
-      $db_user = $this->get_user_by_email($user['user_email']); 
+      $db_user = $this->get_user_by_email($user['user_email']);
       $is_admin = false;
       if($db_user){
         //UPDATE PASSWORD VERIFICATION
@@ -51,7 +51,6 @@ class UserService {
 
     public function add_user($user){
       $user_id = $this->user_dao->add($user);
-
       return $user_id;
     }
 

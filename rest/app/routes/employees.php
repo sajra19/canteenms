@@ -26,7 +26,7 @@ Flight::route('GET /employees', function ($route) {
  *     summary="Add new employee",
  * )
  */
-Flight::route('POST /employee', function ($route) {  
+Flight::route('POST /employees', function ($route) {
     //$user_data = Auth::decode_jwt_admin($route);
     Flight::employee_service()->add_employee(Flight::request()->data->getData());
     Flight::json('Employee has been added');
@@ -48,7 +48,7 @@ Flight::route('POST /employee', function ($route) {
  *     ),
  * )
  */
-Flight::route("DELETE /employee/@id", function ($id, $route) {
+Flight::route("DELETE /employees/@id", function ($id, $route) {
   //  $user_data = Auth::decode_jwt_admin($route);
     Flight::employee_service()->delete_employee($id);
     Flight::json('Employee has been deleted');

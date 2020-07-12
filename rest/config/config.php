@@ -26,7 +26,7 @@ if (explode(' ', php_uname('s'))[0] === 'Windows') {
 if ((empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off') && ENV === 'PROD') {
     $base_path = 'https://' . $_SERVER['HTTP_HOST'] . '/';
 } else {
-    $base_path = 'http://localhost/test/rest'; // $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $slash . explode($slash, $_SERVER['REQUEST_URI'])[1];
+    $base_path = 'http://localhost/canteenms/rest'; // $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $slash . explode($slash, $_SERVER['REQUEST_URI'])[1];
 }
 define('API_BASE_PATH', $base_path);
 define('SERVER_ROOT', __DIR__ . '/..');

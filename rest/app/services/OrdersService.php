@@ -13,7 +13,7 @@ class OrdersService {
         $orders[$idx]['delete_orders'] = '<a class="btn btn-xs btn-outline red" onclick="Orders.delete_orders('.$orders['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>';
         $orders[$idx]['finish_orders'] = '<a class="btn btn-xs btn-outline red" onclick="Orders.finish_orders('.$orders['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Finish</a>';
       }
-
+      
       return $orders;
     }
 
@@ -33,13 +33,13 @@ class OrdersService {
       $user_dao = new UserDao();
       $user_id = $user_dao->add_user($user);
 
-      $employee = [
+      $user = [
         'user_id' => $user_id,
-        'name' => $employee['name'],
-        'surname' => $employee['surname']
+        'name' => $orders['name'],
+        'surname' => $orders['surname']
       ];
 
-      $this->employee_dao->add($employee);
+      $this->orders_dao->add($orders);
     }
 
 

@@ -8,5 +8,5 @@ require_once 'autoload.php';
 /**
  * Start the Flight framework.
  */
- 
+
 Flight::start();

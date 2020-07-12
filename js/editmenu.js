@@ -3,12 +3,12 @@ var Menu = {
     RestClient.get("menu",  function(data){
       Utils.datatable("menu_table",
         [
-        {'data':'id', 'title': 'ID'},
-        {'data':'name','title': 'Name'},
-        {'data':'price', 'title': 'Price'},
-        {'data':'description', 'title': 'Description'},
-        {'data':'status', 'title': 'Status'},
-        {'data':'delete_menu', 'title': 'Delete'}
+        {'data':'id', 'title': 'ID', "defaultContent": ""},
+        {'data':'name','title': 'Name', "defaultContent": ""},
+        {'data':'price', 'title': 'Price', "defaultContent": ""},
+        {'data':'description', 'title': 'Description', "defaultContent": ""},
+        {'data':'status', 'title': 'Status', "defaultContent": ""},
+        {'data':'delete_menu', 'title': 'Delete', "defaultContent": ""}
       ], data);
     }, function(data){
       toastr.error(data.responseText);

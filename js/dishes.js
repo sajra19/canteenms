@@ -3,12 +3,11 @@ var Dishes = {
     RestClient.get("dishes",  function(data){
       Utils.datatable("dishes_table",
         [
-        {'data':'id', 'title': 'ID'},
-        {'data':'name','title': 'Name'},
-        {'data':'description', 'title': 'Description'},
-        {'data':'price', 'title': 'Price'},
-        {'data':'status', 'title': 'Status'},
-        {'data':'delete_dishes', 'title': 'Delete'}
+        {'data':'id', 'title': 'ID', "defaultContent": ""},
+        {'data':'name','title': 'Name', "defaultContent": ""},
+        {'data':'description', 'title': 'Description', "defaultContent": ""},
+        {'data':'price', 'title': 'Price', "defaultContent": ""},
+        {'data':'add', 'title': 'Add', "defaultContent": ""}
       ], data);
     }, function(data){
       toastr.error(data.responseText);
@@ -24,8 +23,19 @@ var Dishes = {
      })
    },
 
+
+   post_dishes : function(id){
+     RestClient.post('dishes/'+id, function(data){
+       toastr.success(data);
+       Dishes.get_dishes();
+     }, function(data){console.log(data);
+       toastr.error('Item was not added');
+     })
+   },
+
+
    finish_order : function(id){
-     RestClient.PUT('dishes/',{id:id} function(data){
+     RestClient.put('dishes/',{id:id}, function(data){
        toastr.success(data);
        Dishes.get_dishes();
      }, function(data){console.log(data);

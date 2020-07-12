@@ -22,7 +22,7 @@ class MenuService {
     }
 
     public function add_menu($menu){
-      $user = [
+      $menu = [
         //polje iz baze => polje iz forme
         'name' => $menu['name'],
         'price' => $menu['price'],
@@ -31,16 +31,6 @@ class MenuService {
         'type' => 'admin'
       ];
 
-      $user_dao = new UserDao();
-      $user_id = $user_dao->add_user($user);
-
-      $employee = [
-        'user_id' => $user_id,
-        'name' => $employee['name'],
-        'surname' => $employee['surname']
-      ];
-
-      $this->employee_dao->add($employee);
     }
 
 

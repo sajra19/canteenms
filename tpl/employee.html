@@ -47,6 +47,10 @@
               <label for="password">Password:</label>
               <input type="password" id="password" name="password" class="form-control"></input>
             </div>
+            <div>
+              <label for="phone">Phone:</label>
+              <input type="number" id="phone" name="phone" class="form-control"></input>
+            </div>
           </div>
           <div class="error"><span></span></div>
         <div class="modal-footer">
@@ -92,6 +96,10 @@
               <label for="phone">Phone:</label>
               <input type="phone" id="phone" name="phone" class="form-control" required></input>
             </div>
+            <div>
+              <label for="status">Status:</label>
+              <input type="text" id="status" name="status" class="form-control" required></input>
+            </div>
           </div>
           <div class="error"><span></span></div>
         <div class="modal-footer">
@@ -109,7 +117,7 @@ Employee.get_employees();
 
 $("#employee_form").validate({
   submitHandler: function(form, validator) {
-    $.post('rest/employee', $("#employee_form").serialize()).done(function(data){
+    $.post('rest/employees', $("#employee_form").serialize()).done(function(data){
      toastr.success(data);
      $('#myModal').modal('toggle');
      Employee.get_employees();
@@ -118,5 +126,6 @@ $("#employee_form").validate({
     });
   }
 });
+
 
 </script>

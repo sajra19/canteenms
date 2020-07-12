@@ -4,9 +4,9 @@
         private $dish_dao;
 
         public function __construct() {
-            $this->dish_dao = new DishDao();
+            $this->dish_dao = new DishesDao();
         }
-    
+
         public function get_dishes(){
           $dishes = $this->dish_dao->get_all();
           foreach ($dishes as $idx => $dish){

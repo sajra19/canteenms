@@ -1,4 +1,6 @@
 <?php
+
+//require 'dao/UserDao.php';
 class EmployeeService {
 
     private $employee_dao;
@@ -9,6 +11,7 @@ class EmployeeService {
 
     public function get_employees(){
       $employees = $this->employee_dao->get_all();
+
       foreach ($employees as $idx => $employee){
         $employees[$idx]['delete_employee'] = '<a class="btn btn-xs btn-outline red" onclick="Employee.delete_employee('.$employee['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>';
       }

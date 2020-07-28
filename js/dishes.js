@@ -14,7 +14,7 @@ var Dishes = {
     });
   },
 
-   delete_dishes : function(id){
+   delete_dish : function(id){
      RestClient.delete('dishes/'+id, function(data){
        toastr.success(data);
        Dishes.get_dishes();
@@ -24,7 +24,7 @@ var Dishes = {
    },
 
 
-   post_dishes : function(id){
+   post_dish : function(id){
      RestClient.post('dishes/'+id, function(data){
        toastr.success(data);
        Dishes.get_dishes();
@@ -34,7 +34,7 @@ var Dishes = {
    },
 
 
-   finish_order : function(id){
+   finish_dish : function(id){
      RestClient.put('dishes/',{id:id}, function(data){
        toastr.success(data);
        Dishes.get_dishes();

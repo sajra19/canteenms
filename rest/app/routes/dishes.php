@@ -48,8 +48,8 @@ Flight::route('POST /dishes', function ($route) {
  *     ),
  * )
  */
-Flight::route("DELETE /dishes/@id", function ($id, $route) {
+Flight::route("DELETE /dish/@id", function ($id, $route) {
   //  $user_data = Auth::decode_jwt_admin($route);
-    Flight::dishes_service()->delete_dishes($id);
+    Flight::dishes_service()->delete_dish($id);
     Flight::json('Dish has been deleted');
 }, true);

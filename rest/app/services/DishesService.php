@@ -11,6 +11,7 @@
           $dishes = $this->dish_dao->get_all();
           foreach ($dishes as $idx => $dish){
             $dishes[$idx]['delete_dish'] = '<a class="btn btn-xs btn-outline red" onclick="Dish.delete_dish('.$dish['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>';
+            $dishes[$idx]['finish_dish'] = '<a class="btn btn-xs btn-outline red" onclick="Dish.finish_dish('.$dish['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Finish</a>';
           }
 
           return $dishes;

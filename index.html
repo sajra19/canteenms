@@ -146,7 +146,7 @@
             '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#menu">Menu</a>' +
             "</li>" +
             '<li class="nav-item mx-0 mx-lg-1">' +
-            '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#checkout">Check Out</a>' +
+            '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cart">Cart</a>' +
             "</li>" +
             '<li class="nav-item mx-0 mx-lg-1">' +
             '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#logout">Logout</a>' +
@@ -157,7 +157,7 @@
           var main =
             '<section id="home">Home</section>' +
             '<section id="menu">Menu</section>' +
-            '<section id="checkout">Checkout</section>' +
+            '<section id="cart">Cart</section>' +
             '<section id="logout">Logout</section>';
           $("#spapp").html(main);
 
@@ -211,6 +211,13 @@
         }
       } else {
         window.location = "login.html";
+      //  function logout(){
+          //  window.localStorage.clear();
+        //   window.location = "login.html";
+      //    }
+
+
+
       }
     } else {
       window.location = "login.html";

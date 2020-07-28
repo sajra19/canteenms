@@ -16,8 +16,8 @@ $(document).ready(function() {
   });
 
   app.route({
-    view: 'checkout',
-    load: 'checkout.html'
+    view: 'cart',
+    load: 'cart.html'
   });
 
   app.route({

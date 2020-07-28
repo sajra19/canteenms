@@ -19,7 +19,7 @@ var Dishes = {
         toastr.error(data.responseText);
       }
     );
-  },
+  }, 
 
   delete_dish: function (id) {
     RestClient.delete(

@@ -1,6 +1,6 @@
 var Cart = {
   get_customer_cart: function () {
-    user_id = Utils.parseJwt(localStorage.getItem("user_token")).data.id;
+  //  user_id = Utils.parseJwt(localStorage.getItem("user_token")).data.id;
     RestClient.get(
       "dishes?id=" + user_id,
       function (data) {

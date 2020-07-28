@@ -10,8 +10,9 @@
         public function get_dishes(){
           $dishes = $this->dish_dao->get_all();
           foreach ($dishes as $idx => $dish){
-            $dishes[$idx]['delete_dish'] = '<a class="btn btn-xs btn-outline red" onclick="Dish.delete_dish('.$dish['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>';
-            $dishes[$idx]['finish_dish'] = '<a class="btn btn-xs btn-outline red" onclick="Dish.finish_dish('.$dish['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Finish</a>';
+            $dishes[$idx]['delete_dish'] = '<a class="btn btn-xs btn-outline red" onclick="Dishes.delete_dish('.$dish['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>';
+            $dishes[$idx]['finish_dish'] = '<a class="btn btn-xs btn-outline red" onclick="Dishes.finish_dish('.$dish['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Finish</a>';
+            $dishes[$idx]['add_dish'] = '<a class="btn btn-info" onclick="Dishes.add_to_cart('.$dish['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Add to Cart</a>';
           }
 
           return $dishes;
@@ -38,6 +39,10 @@
             'status' => $dish['status']
           ];
 
+          $this->dish_dao->add($dish);
+        }
+
+        public function add_to_cart($dish){ 
           $this->dish_dao->add($dish);
         }
 

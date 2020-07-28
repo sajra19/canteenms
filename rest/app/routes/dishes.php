@@ -21,14 +21,28 @@ Flight::route('GET /dishes', function ($route) {
 /**
  *
  * @OA\Post(
- *     path="/employee",
- *     tags={"employee"},
- *     summary="Add new employee",
+ *     path="/dishes",
+ *     tags={"dish"},
+ *     summary="Add new dish",
  * )
  */
 Flight::route('POST /dishes', function ($route) {
     //$user_data = Auth::decode_jwt_admin($route);
     Flight::dishes_service()->add_dishes(Flight::request()->data->getData());
+    Flight::json('Dish has been added');
+}, true);
+
+/**
+ *
+ * @OA\Post(
+ *     path="/dish_to_cart",
+ *     tags={"dish"},
+ *     summary="Add dish to cart",
+ * )
+ */
+Flight::route('POST /dish_to_cart', function ($route) {
+    //$user_data = Auth::decode_jwt_admin($route);
+    Flight::dishes_service()->add_to_cart(Flight::request()->data->getData());
     Flight::json('Dish has been added');
 }, true);
 

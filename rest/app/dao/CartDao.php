@@ -9,7 +9,7 @@ class CartDao extends BaseDao{
   }
 
   public function get_by_user_id($id){
-    return $this->execute_query("SELECT * FROM $this->table WHERE user_id = :id AND amount > 0", ["id" => $id]);
+    return $this->execute_query("SELECT * FROM $this->table WHERE user_id = :id AND amount > 0 AND status NOT IN ('CANCELED', 'FINISHED')", ["id" => $id]);
   }
 
   public function update_amount($id, $amount){
@@ -21,7 +21,11 @@ class CartDao extends BaseDao{
   }
 
   public function update_cart_dish_status($id, $status){
-      $this->execute([':id' => $id, ':status' => $status], " UPDATE $this->table SET status = :status WHERE amount > 0 AND user_id = :user_id");
+      $this->execute([':id' => $id, ':status' => $status], " UPDATE $this->table SET status = :status WHERE id = :id");
+  }
+
+  public function get_orders(){
+    return $this->execute_query("SELECT * FROM $this->table WHERE status IN ('CONFIRMED', 'READY')", []);
   }
 }
 

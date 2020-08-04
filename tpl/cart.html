@@ -1,22 +1,33 @@
-
-
 <style>
-.error{
-  color: red;
-}
+  .error {
+    color: red;
+  }
 </style>
 
-<div style="margin-top:10%; margin-left: 2%; margin-right:2%">
-  <button type="button" class="btn btn-primary btn-lg" onclick="Cart.update_cart_status()">CONFIRMED</button>
-<button type="button" class="btn btn-secondary btn-lg" onclick="Cart.update_cart_status()">CENCLED</button>
+<div style="margin-top: 10%; margin-left: 2%; margin-right: 2%;">
+  <button
+    type="button"
+    class="btn btn-primary btn-lg"
+    onclick="Cart.update_cart_status('CONFIRMED')"
+  >
+    CONFIRM
+  </button>
+  <button
+    type="button"
+    class="btn btn-secondary btn-lg"
+    onclick="Cart.update_cart_status('CANCELED')"
+  >
+    CANCEL
+  </button>
+  <p id="total_amount"></p>
 </div>
 
-<div style="margin-top:5%; margin-left: 2%; margin-right:2%">
+<div style="margin-top: 5%; margin-left: 2%; margin-right: 2%;">
   <h2>Cart</h2>
   <!-- Trigger the modal with a button -->
 
   <table id="cart_table"></table>
+</div>
 <script type="text/javascript">
-Cart.get_customer_cart();
-
+  Cart.get_customer_cart();
 </script>

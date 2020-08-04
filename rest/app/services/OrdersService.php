@@ -1,24 +1,29 @@
 <?php
 class OrdersService {
 
-    private $orders_dao;
+    private $cart_dao;
 
     public function __construct() {
-        $this->orders_dao = new OrdersDao();
+        $this->cart_dao = new CartDao();
     }
 
     public function get_orders(){
-      $orders = $this->orders_dao->get_all();
-      foreach ($orders as $idx => $orders){
-        $orders[$idx]['delete_orders'] = '<a class="btn btn-xs btn-outline red" onclick="Orders.delete_orders('.$orders['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>';
-        $orders[$idx]['finish_orders'] = '<a class="btn btn-xs btn-outline red" onclick="Orders.finish_orders('.$orders['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Finish</a>';
+      $orders = $this->cart_dao->get_orders();
+      $dish_dao = new DishesDao();
+      foreach ($orders as $idx => $order){
+        $dish = $dish_dao->get_by_id($order['dish_id'])[0];
+        $orders[$idx]['dish_name'] = $dish['name'];
+        $orders[$idx]['price'] = $dish['price'] * $order['amount'];
+        $orders[$idx]['reject'] = '<button class="btn btn-xs btn-outline red" onclick="Cart.update_cart_dish_status('.$order['id'].', \''."REJECTED".'\')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</button>';
+        $orders[$idx]['ready'] = '<button class="btn btn-xs btn-outline red" onclick="Cart.update_cart_dish_status('.$order['id'].', \''."READY".'\')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Ready</button>';
+        $orders[$idx]['finish'] = '<button class="btn btn-xs btn-outline red" onclick="Cart.update_cart_dish_status('.$order['id'].', \''."FINISHED".'\')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Finish</button>';
       }
-      
+
       return $orders;
     }
 
     public function delete_orders($orders_id){
-      $this->orders_dao->delete_by_id((int)$orders_id);
+      $this->cart_dao->delete_by_id((int)$orders_id);
     }
 
     public function add_orders($orders){
@@ -39,7 +44,7 @@ class OrdersService {
         'surname' => $orders['surname']
       ];
 
-      $this->orders_dao->add($orders);
+      $this->cart_dao->add($orders);
     }
 
 

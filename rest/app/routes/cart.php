@@ -89,14 +89,14 @@ Flight::route('PATCH /cart/@id/amount', function ($id, $route) {
  */
 Flight::route('PATCH /cart/@customer_id/status', function ($customer_id, $route) {
 
-    $cart = Flight::cart_service()->checkout($customer_id, Flight::request()->query['status']);
+    $cart = Flight::cart_service()->update_cart_status($customer_id, Flight::request()->query['status']);
     Flight::json($cart);
 }, true);
 
 /**
  *
  * @OA\Patch(
- *     path="/cart/{id}/status",
+ *     path="/cart/admin/{id}/status",
  *     tags={"cart"},
  *     summary="Update cart dish by employee or admin",
  *     @OA\Parameter(
@@ -117,7 +117,7 @@ Flight::route('PATCH /cart/@customer_id/status', function ($customer_id, $route)
  *     ),
  * )
  */
-Flight::route('PATCH /cart/@id/status', function ($id, $route) {
+Flight::route('PATCH /cart/admin/@id/status', function ($id, $route) {
 
     $cart = Flight::cart_service()->update_cart_dish_status($id, Flight::request()->query['status']);
     Flight::json($cart);

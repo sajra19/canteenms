@@ -54,5 +54,4 @@ class UserService {
       return $user_id;
     }
 
-
 }

@@ -49,9 +49,9 @@ Flight::route('POST /dish_to_cart', function ($route) {
 /**
  *
  * @OA\Delete(
- *     path="/employee/{id}",
- *     tags={"employees"},
- *     summary="Delete employee",
+ *     path="/dish/{id}",
+ *     tags={"dish"},
+ *     summary="Delete dish",
  *     @OA\Parameter(
  *         name="id",
  *         in="path",

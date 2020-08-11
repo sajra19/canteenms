@@ -12,3 +12,16 @@ Flight::route('POST /login', function () {
   $user = Flight::request()->data->getData();
   Flight::user_service()->login($user);
 });
+
+/**
+ *
+ * @OA\Post(
+ *     path="/register",
+ *     tags={"register"},
+ *     summary="Register",
+ * )
+ */
+Flight::route('POST /register', function () {
+  $user = Flight::request()->data->getData();
+  Flight::customer_service()->register($user);
+});

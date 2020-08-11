@@ -14,6 +14,7 @@ class EmployeeService {
 
       foreach ($employees as $idx => $employee){
         $employees[$idx]['delete_employee'] = '<a class="btn btn-xs btn-outline red" onclick="Employee.delete_employee('.$employee['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>';
+        $employees[$idx]['edit_employee'] = '<a class="btn btn-xs btn-outline red" onclick="Employee.edit_employee('.$employee['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>';
       }
 
       return $employees;
@@ -25,15 +26,13 @@ class EmployeeService {
 
     public function add_employee($employee){
       $user = [
-        //polje iz baze => polje iz forme
-        'user_id' => $user_id,
         'name' => $employee['name'],
         'surname' => $employee['surname'],
         'email' => $employee['email'],
         'password' => $employee['password'],
         'phone' => $employee['phone'],
-        'status' => $employee['status'],
-        'type' => 'employee'
+        'status' => 1,
+        'type' => 2
       ];
 
       $user_dao = new UserDao();

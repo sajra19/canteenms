@@ -108,4 +108,16 @@ $("#menu_form").validate({
   }
 });
 
+$("#edit_form").validate({
+  submitHandler: function(form, validator) {
+    $.post('rest/menu/edit', $("#edit_form").serialize()).done(function(data){
+     toastr.success(data);
+     $('#editModal').modal('toggle');
+     Menu.get_menu();
+   }).fail(function(data){
+      toastr.error(data);
+    });
+  }
+});
+
 </script>

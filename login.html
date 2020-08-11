@@ -41,11 +41,34 @@
           <label for="psword">Password:</label>
           <input type="password" id="psword" name="psword" class="form-control"></input>
         </div>
-
-
         <button type="submit" class="btn btn-success">Login</button>
+        <button class="btn btn-success" type="reset"  id="register_btn">Register</button>
+      </form>
 
-        <!--  <div id="messageBox1"><ul></ul></div>-->
+      <form id="register_form"  style="display:none;">
+        <div class="form-group">
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="form-control"></input>
+          </div>
+          <div>
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname" name="surname" class="form-control"></input>
+          </div>
+          <div>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" class="form-control"></input>
+          </div>
+          <div>
+            <label for="user_email">Email:</label>
+            <input type="email" id="user_email" name="user_email" class="form-control"></input>
+          </div>
+          <div>
+            <label for="psword">Password:</label>
+            <input type="password" id="psword" name="psword" class="form-control"></input>
+          </div>
+          <button type="submit" class="btn btn-success">Register</button>
+          <button  class="btn btn-success" id="login_btn">Back to Login</button>
       </form>
   </div>
 </body>
@@ -68,6 +91,16 @@ jQuery.validator.addMethod("user_email", function(value, element){
   return this.optional( element ) || /[a-z]+@[a-z]+\.[a-z]+/.test( value );
 }, 'Invalid email address');
 
+$('#register_btn').click(function(){
+    $("#login_form").css("display", "none");
+    $("#register_form").css("display", "block");
+
+});
+
+$('#login_btn').click(function(e){
+  $("#register_form").css("display", "none");
+  $("#login_form").css("display", "block");
+});
 
 $("#login_form").validate({
  focusCleanup: true,
@@ -91,12 +124,11 @@ messages: {
 submitHandler: function(form, validator) {
   $.post('rest/login', $("#login_form").serialize()).done(function(data){
     toastr.success('Welcome');
-    window.localStorage.setItem("user_token", data.user_token);
-    window.location = "index.html";
+    window.localStorage.setItem("user_token", data.user_token); console.log(data);
+    window.location = "#home";
   }).fail(function(){
      toastr.error('Error');
   });
-
 },
 invalidHandler: function(event, validator) {
   var errors = validator.numberOfInvalids();
@@ -111,6 +143,17 @@ invalidHandler: function(event, validator) {
     $("div.error").hide();
   }
  }
+});
+
+$("#register_form").validate({
+submitHandler: function(form, validator) {
+  $.post('rest/register', $("#register_form").serialize()).done(function(data){
+    toastr.success('Account created successfully');
+    window.location = "login.html";
+  }).fail(function(){
+     toastr.error('Error');
+  });
+}
 });
 
 </script>

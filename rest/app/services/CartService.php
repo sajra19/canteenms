@@ -19,8 +19,8 @@
             $dish = $dish_dao->get_by_id($cart['dish_id'])[0];
             $carts[$idx]['dish_name'] = $dish['name'];
             $carts[$idx]['price'] = $dish['price'] * $cart['amount'];
-            $carts[$idx]['plus'] = '<button class="btn btn-xs btn-outline red" onclick="Cart.update_amount ('.$cart['id'].', \''."I".'\')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Add</button>';
-            $carts[$idx]['minus'] = '<button class="btn btn-xs btn-outline red" onclick="Cart.update_amount ('.$cart['id'].', \''."D".'\')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Remove</button>';
+            $carts[$idx]['plus'] = '<button class="btn btn-success" onclick="Cart.update_amount ('.$cart['id'].', \''."I".'\')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Add</button>';
+            $carts[$idx]['minus'] = '<button class="btn btn-danger" onclick="Cart.update_amount ('.$cart['id'].', \''."D".'\')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Remove</button>';
             $total += $carts[$idx]['price'];
           }
 

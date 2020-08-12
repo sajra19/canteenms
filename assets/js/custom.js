@@ -21,6 +21,11 @@ $(document).ready(function() {
   });
 
   app.route({
+    view: 'customer',
+    load: 'customer.html'
+  });
+
+  app.route({
     view: 'employee',
     load: 'employee.html'
   });

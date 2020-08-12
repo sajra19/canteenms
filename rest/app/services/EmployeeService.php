@@ -14,10 +14,18 @@ class EmployeeService {
 
       foreach ($employees as $idx => $employee){
         $employees[$idx]['delete_employee'] = '<a class="btn btn-xs btn-outline red" onclick="Employee.delete_employee('.$employee['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>';
-        $employees[$idx]['edit_employee'] = '<a class="btn btn-xs btn-outline red" onclick="Employee.edit_employee('.$employee['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>';
+        $employees[$idx]['edit_employee'] = '<button class="btn btn-xs btn-outline red" data-toggle="modal" data-target="#editModal" onclick="Employee.open_edit_modal('.$employee['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Edit</button>';
       }
 
       return $employees;
+    }
+
+    public function get_employee_by_id($id){
+      return $this->employee_dao->get_by_id($id)[0];
+    }
+
+    public function update_employee_status($id){
+      $this->employee_dao->update_employee_status($id);
     }
 
     public function delete_employee($employee_id){
@@ -35,17 +43,13 @@ class EmployeeService {
         'type' => 2
       ];
 
-      $user_dao = new UserDao();
-      $user_id = $user_dao->add_user($user);
-
-      $employee = [
-        'user_id' => $user_id,
-        'name' => $employee['name'],
-        'surname' => $employee['surname'],
-      ];
-
       $this->employee_dao->add($employee);
     }
+
+
+        public function update_employee($employee){
+          $this->employee_dao->update_emmployee_item($employee);
+        }
 
 
 }

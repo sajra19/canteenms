@@ -1,7 +1,7 @@
 var Customers = {
   get_customers: function () {
     RestClient.get(
-      "customer",
+      "customers",
       function (data) {
         Utils.datatable(
           "customers_table",
@@ -19,4 +19,4 @@ var Customers = {
       }
     );
   }
-}
+};

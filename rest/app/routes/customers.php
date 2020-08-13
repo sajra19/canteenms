@@ -14,6 +14,6 @@
 */
 Flight::route('GET /customers', function ($route) {
   //  $user_data = Auth::decode_jwt_admin($route);
-    $customers = Flight::customers_service()->get_customers();
-    Flight::json($dishes);
+    $customers = Flight::customer_service()->get_customers();
+    Flight::json($customers);
 }, true);

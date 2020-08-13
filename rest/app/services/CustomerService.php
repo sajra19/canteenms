@@ -7,6 +7,13 @@ class CustomerService {
         $this->customer_dao = new CustomerDao();
     }
 
+
+    public function get_customers(){
+      $customers = $this->customer_dao->get_all();
+
+      return  $customers;
+    }
+
     public function register($customer){
       $user = [
         'name' => $customer['name'],

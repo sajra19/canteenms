@@ -73,6 +73,10 @@ class BaseDao{
     $this->execute($entity, $query);
   }
 
+  public function update_password($id, $password){
+    $this->execute([':id' => $id, ':password' => $password], "UPDATE {$this->table_name} SET password = :password WHERE id = :id");
+  }
+
   public function delete_by_id($id){
     $this->execute([':id' => $id], "UPDATE {$this->table_name} SET status = 'DELETED' WHERE id = :id");
   }

@@ -12,7 +12,7 @@ class UserService {
       $is_admin = false;
       if($db_user){
         //UPDATE PASSWORD VERIFICATION
-        if($db_user['password'] == $user['psword']){
+      if(password_verify($user['psword'], $db_user['password']) /*$db_user['password'] == $user['psword']*/){
           if($db_user['type_id'] == 3){
             $employee_dao = new EmployeeDao();
             $db_user_data = $employee_dao->get_by_id($db_user['id']);
@@ -52,6 +52,16 @@ class UserService {
     public function add_user($user){
       $user_id = $this->user_dao->add($user);
       return $user_id;
+    }
+
+    public function get_user_profile($id){
+      $user = $this->user_dao->get_by_id($id)[0];
+      return $user;
+    }
+
+    public function update_profile($user){
+      $user['psword'] = password_hash($user['psword'], PASSWORD_DEFAULT);
+      $this->user_dao->update_profile($user);
     }
 
 }

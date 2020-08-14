@@ -20,6 +20,7 @@ Flight::register('dishes_service', 'DishesService');
 Flight::register('menu_service', 'MenuService');
 Flight::register('cart_service', 'CartService');
 Flight::register('customer_service', 'CustomerService');
+Flight::register('admin_service', 'AdminService');
 
 /* Flight middleware | Logging */
 Flight::after('start', function(&$params, &$output) {

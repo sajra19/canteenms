@@ -35,10 +35,24 @@ var Customers = {
         Customers.get_customers("active");
       },
       function (data) {
-        toastr.error("Customer status was not deleted");
+        toastr.error("Customer status was not updated");
       }
     );
   },
 
-  reset_password: function (user_id) {},
+  reset_password: function (user_id) {
+    RestClient.patch(
+      "customer/" + user_id + "/reset_password",
+      null,
+      function (data) {
+        $("#passwordButton").trigger("click");
+        $("#new_password").html(data);
+        toastr.success("Customer password updated successfully");
+        Customers.get_customers("active");
+      },
+      function (data) {
+        toastr.error("Customer pasword was not updated");
+      }
+    );
+  },
 };

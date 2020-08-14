@@ -51,3 +51,26 @@ Flight::route('PATCH /customer/@id/status', function ($id, $route) {
     $customer = Flight::customer_service()->update_status($id, Flight::request()->query['status']);
     Flight::json($customer);
 }, true);
+
+
+/**
+ *
+ * @OA\Patch(
+ *     path="/customer/{id}/reset_password",
+ *     tags={"customer"},
+ *     summary="Update customer status",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         required=true,
+ *         @OA\Schema(
+ *             type="string"
+ *         )
+ *     ),
+ * )
+ */
+Flight::route('PATCH /customer/@id/reset_password', function ($id, $route) {
+
+    $password = Flight::customer_service()->reset_password($id);
+    Flight::json($password);
+}, true);

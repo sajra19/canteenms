@@ -64,7 +64,7 @@ class EmployeeService {
           'name' => $employee['name'],
           'surname' => $employee['surname'],
           'email' => $employee['email'],
-          'password' => $employee['password'],
+          'password' => password_hash($employee['psword'], PASSWORD_DEFAULT), //$employee['password'],
           'phone' => $employee['phone'],
           'status' => 1,
           'type_id' => 2

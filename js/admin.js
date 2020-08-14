@@ -1,27 +1,37 @@
 var Admin = {
-  get_admin : function(){
-    RestClient.get("admin",  function(data){
-      Utils.datatable("admin_table",
-        [
-        {'data':'id', 'title': 'ID'},
-        {'data':'name','title': 'Name'},
-        {'data':'surname', 'title': 'Surname'},
-        {'data':'email', 'title': 'Email'},
-        {'data':'phone_number', 'title': 'Phone'},
-        {'data':'status', 'title': 'Status'},
-        {'data':'delete_admin', 'title': 'Delete'}
-      ], data);
-    }, function(data){
-      toastr.error(data.responseText);
-    });
+  get_admins: function (status) {
+    RestClient.get(
+      "admin?status=" + status,
+      function (data) {
+        Utils.datatable(
+          "admin_table",
+          [
+            { data: "name", title: "Name", defaultContent: "" },
+            { data: "surname", title: "Surname", defaultContent: "" },
+            { data: "email", title: "Email", defaultContent: "" },
+            { data: "phone", title: "Phone", defaultContent: "" },
+            { data: "update_status", title: "Status", defaultContent: "" },
+          ],
+          data
+        );
+      },
+      function (data) {
+        toastr.error(data.responseText);
+      }
+    );
   },
 
-   delete_admin : function(id){
-     RestClient.delete('admin/'+id, function(data){
-       toastr.success(data);
-       Admin.get_students();
-     }, function(data){console.log(data);
-       toastr.error('Admin was not deleted');
-     })
-   }
-}
+  update_status: function (id, status) {
+    RestClient.patch(
+      "admin/" + id + "/status?status=" + status,
+      null,
+      function (data) {
+        toastr.success("Admin status updated successfully");
+        Admin.get_admins("active");
+      },
+      function (data) {
+        toastr.error("Admin status was not updated");
+      }
+    );
+  },
+};

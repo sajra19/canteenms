@@ -98,7 +98,8 @@
     <script src="js/dishes.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/customers.js"></script>
-
+    <script src="js/admin.js"></script>
+    <script src="js/profile.js"></script>
   </head>
 
   <body id="page-top">
@@ -151,6 +152,9 @@
             '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cart">Cart</a>' +
             "</li>" +
             '<li class="nav-item mx-0 mx-lg-1">' +
+            '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#profile">Profile</a>' +
+            "</li>" +
+            '<li class="nav-item mx-0 mx-lg-1">' +
             '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#logout">Logout</a>' +
             "</li>";
 
@@ -160,6 +164,7 @@
             '<section id="home">Home</section>' +
             '<section id="menu">Menu</section>' +
             '<section id="cart">Cart</section>' +
+            '<section id="profile">Profile</section>' +
             '<section id="logout">Logout</section>';
           $("#spapp").html(main);
 
@@ -174,6 +179,9 @@
             '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#editmenu">Edit Menu</a>' +
             "</li>" +
             '<li class="nav-item mx-0 mx-lg-1">' +
+            '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#profile">Profile</a>' +
+            "</li>" +
+            '<li class="nav-item mx-0 mx-lg-1">' +
             '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#logout">Logout</a>' +
             "</li>";
 
@@ -182,6 +190,7 @@
           var main =
             '<section id="orders">Orders</section>' +
             '<section id="editmenu">Edit Menu</section>' +
+            '<section id="profile">Profile</section>' +
             '<section id="logout">Logout</section>';
           $("#spapp").html(main);
         }
@@ -202,6 +211,12 @@
             '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#editmenu">Edit Menu</a>' +
             "</li>" +
             '<li class="nav-item mx-0 mx-lg-1">' +
+            '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#admin">Admin</a>' +
+            "</li>" +
+            '<li class="nav-item mx-0 mx-lg-1">' +
+            '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#profile">Profile</a>' +
+            "</li>" +
+            '<li class="nav-item mx-0 mx-lg-1">' +
             '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#logout">Logout</a>' +
             "</li>";
 
@@ -212,18 +227,17 @@
             '<section id="employee">Employee</section>' +
             '<section id="customer">Customer</section>' +
             '<section id="editmenu">Edit Menu</section>' +
+            '<section id="admin">Admin</section>' +
+            '<section id="profile">Profile</section>' +
             '<section id="logout">Logout</section>';
           $("#spapp").html(main);
         }
       } else {
         window.location = "login.html";
-      //  function logout(){
-          //  window.localStorage.clear();
+        //  function logout(){
+        //  window.localStorage.clear();
         //   window.location = "login.html";
-      //    }
-
-
-
+        //    }
       }
     } else {
       window.location = "login.html";

@@ -40,6 +40,15 @@ class CustomerService {
       $this->customer_dao->update_status($id, $status);
     }
 
+    public function reset_password($id){
+      $rand = substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);
+      $password = password_hash($rand, PASSWORD_DEFAULT);
+
+      $user_dao = new UserDao();
+      $user_dao->update_password($id, $password);
+      return $rand;
+    }
+
     public function register($customer){
       $user_dao = new UserDao();
       $user = $user_dao->get_by_email($customer['email']);
@@ -52,7 +61,7 @@ class CustomerService {
           'surname' => $customer['surname'],
           'phone'=> $customer['phone'],
           'email' => $customer['user_email'],
-          'password' => $customer['psword'],
+          'password' => password_hash($customer['psword'], PASSWORD_DEFAULT),//$customer['psword'],
           'status' => 1,
           'type_id' => 1
         ];

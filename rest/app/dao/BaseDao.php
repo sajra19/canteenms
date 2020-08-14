@@ -26,6 +26,14 @@ class BaseDao{
     return $this->execute_query("SELECT * FROM {$this->table_name} WHERE id = :id", ["id" => $id]);
   }
 
+  public function get_by_email($email){
+    return $this->execute_query("SELECT * FROM {$this->table_name} WHERE email = :email", [":email" => $email]);
+  }
+
+  public function get_by_user_id($user_id){
+     return $this->execute_query("SELECT * FROM {$this->table_name} t JOIN user u ON t.user_id = u.id WHERE t.user_id = :user_id", [":user_id" => $user_id]);
+  }
+
   protected function execute_insert($entity){
     $columns = "";
     $params = "";
@@ -53,7 +61,7 @@ class BaseDao{
         foreach($entity as $key => $value){
           $stmt->bindValue($key, $value);
         }
-      } 
+      }
       $stmt->execute();
       return $stmt;
     } catch (PDOException $e) {

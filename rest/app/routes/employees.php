@@ -6,6 +6,14 @@
 *     tags={"employee"},
 *     summary="Get list of all employees",
 *     description="Get list of all employees",
+*     @OA\Parameter(
+*         name="id",
+*         in="query",
+*         required=false,
+*         @OA\Schema(
+*             type="string"
+*         )
+*     )
 *     @OA\Response(
 *         response=200,
 *         description="Successful operation"
@@ -14,7 +22,7 @@
 */
 Flight::route('GET /employees', function ($route) {
   //  $user_data = Auth::decode_jwt_admin($route);
-    $employee = Flight::employee_service()->get_employees();
+    $employee = Flight::employee_service()->get_employees(Flight::request()->query['status']);
     Flight::json($employee);
 }, true);
 
@@ -37,7 +45,7 @@ Flight::route('GET /employees', function ($route) {
 * )
 */
 Flight::route('GET /employees/id', function () {
-   $employee = Flight::employee_service()->get_employee_by_id(Flight::request()->query['id']);
+   $employee = Flight::employee_service()->get_by_user_id(Flight::request()->query['id']);
    Flight::json($employee);
 }, true);
 
@@ -53,8 +61,8 @@ Flight::route('GET /employees/id', function () {
  */
 Flight::route('POST /employees', function ($route) {
     //$user_data = Auth::decode_jwt_admin($route);
-    Flight::employee_service()->add_employee(Flight::request()->data->getData());
-    Flight::json('Employee has been added');
+    $message = Flight::employee_service()->add_employee(Flight::request()->data->getData());
+    Flight::json($message);
 }, true);
 
 
@@ -67,20 +75,17 @@ Flight::route('POST /employees', function ($route) {
  *     summary="Edit employee",
  * )
  */
-Flight::route('POST /employees/edit', function ($route) {
+Flight::route('POST /employee/edit', function ($route) {
     Flight::employee_service()->update_employee(Flight::request()->data->getData());
     Flight::json('Employee has been updated');
 }, true);
 
-
-
-
 /**
  *
  * @OA\Patch(
- *     path="/employees/{id}/status",
+ *     path="/employee/{id}/status",
  *     tags={"employee"},
- *     summary="Delete employee",
+ *     summary="Update employee status",
  *     @OA\Parameter(
  *         name="id",
  *         in="path",
@@ -88,12 +93,20 @@ Flight::route('POST /employees/edit', function ($route) {
  *         @OA\Schema(
  *             type="string"
  *         )
+ *     ),
+ *     @OA\Parameter(
+ *         name="status",
+ *         in="query",
+ *         required=false,
+ *         @OA\Schema(
+ *             type="string"
+ *         )
  *     )
  * )
  */
-Flight::route('PATCH /employees/@id/status', function ($id, $route) {
+Flight::route('PATCH /employee/@id/status', function ($id, $route) {
 
-    $employee = Flight::employee_service()->update_employee_status($id);
+    $employee = Flight::employee_service()->update_status($id, Flight::request()->query['status']);
     Flight::json($employee);
 }, true);
 

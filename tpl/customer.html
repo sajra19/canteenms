@@ -7,11 +7,35 @@
 </style>
 
 <div style="margin-top: 10%; margin-left: 2%; margin-right: 2%;">
+  <div class="btn-group" role="group" aria-label="">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      onclick="Customers.get_customers('all')"
+    >
+      All
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      onclick="Customers.get_customers('active')"
+    >
+      Active
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      onclick="Customers.get_customers('deleted')"
+    >
+      Deleted
+    </button>
+  </div>
+
   <h2>Customers</h2>
   <!-- Trigger the modal with a button -->
 
   <table id="customers_table"></table>
   <script type="text/javascript">
-    Customers.get_customers();
+    Customers.get_customers("active");
   </script>
 </div>

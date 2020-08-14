@@ -41,22 +41,32 @@ class CustomerService {
     }
 
     public function register($customer){
-      $user = [
-        'name' => $customer['name'],
-        'surname' => $customer['surname'],
-        'phone'=> $customer['phone'],
-        'email' => $customer['user_email'],
-        'password' => $customer['psword'],
-        'status' => 1,
-        'type_id' => 1
-      ];
-
       $user_dao = new UserDao();
-      $user_id = $user_dao->add($user);
+      $user = $user_dao->get_by_email($customer['email']);
 
-      $customer = [
-        'user_id' =>$user_id,
-        'registered_at' => date('d-m-Y', time())
-      ];
+      if(count($user) > 0){
+        return 'Email is used';
+      } else{
+        $user = [
+          'name' => $customer['name'],
+          'surname' => $customer['surname'],
+          'phone'=> $customer['phone'],
+          'email' => $customer['user_email'],
+          'password' => $customer['psword'],
+          'status' => 1,
+          'type_id' => 1
+        ];
+
+        $user = $user_dao->add($user);
+
+        $customer = [
+          'user_id' => $user['id'],
+          'created_at' => date('d-m-Y', time())
+        ];
+
+        $this->customer_dao->add($customer);
+
+        return 'Account has been created';
+      }
     }
 }

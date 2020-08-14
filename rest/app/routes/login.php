@@ -23,5 +23,6 @@ Flight::route('POST /login', function () {
  */
 Flight::route('POST /register', function () {
   $user = Flight::request()->data->getData();
-  Flight::customer_service()->register($user);
+  $message = Flight::customer_service()->register($user);
+  Flight::json($message);
 });

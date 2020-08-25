@@ -24,9 +24,9 @@ class AdminService {
 
       foreach ($admins as $idx => $admin){
         if($admin['status'] == 1){
-          $admins[$idx]['update_status'] = '<button class="btn btn-xs btn-outline red" onclick="Admin.update_status('.$admin['id'].',0)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</button>';
+          $admins[$idx]['update_status'] = '<button class="btn btn-danger" onclick="Admin.update_status('.$admin['id'].',0)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</button>';
         } else  {
-          $admins[$idx]['update_status'] = '<button class="btn btn-xs btn-outline red" onclick="Admin.update_status('.$admin['id'].',1)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Activate</button>';
+          $admins[$idx]['update_status'] = '<button class="btn btn-success" onclick="Admin.update_status('.$admin['id'].',1)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Activate</button>';
         }
       }
 

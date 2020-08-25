@@ -1,32 +1,80 @@
-<html>
-<div style="margin-top:10%; margin-left: 30%; margin-right:30%">
-  <form id="profile_form" >
-    <div class="form-group">
-      <input type="text" id="id" name="id" class="form-control" hidden></input>
-      <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="fname" class="form-control"></input>
-      </div>
-      <div>
-        <label for="surname">Surname:</label>
-        <input type="text" id="surname" name="lname" class="form-control"></input>
-      </div>
-      <div>
-        <label for="phone">Phone:</label>
-        <input type="text" id="phone" name="phone" class="form-control"></input>
-      </div>
-      <div>
-        <label for="user_email">Email:</label>
-        <input type="email" id="user_email" name="user_email" class="form-control"></input>
-      </div>
-      <div>
-        <label for="psword">Password:</label>
-        <input type="password" id="psword" name="psword" class="form-control"></input>
-      </div>
-      <button  class="btn btn-success" id="update_profile">Update Profile</button>
-  </form>
-  </div>
+<style type="text/css">
 
+
+body{margin-top:20px;}
+   </style>
+
+<body>
+  <div class="row text-center text-white mb-5">
+    <div class="col-lg-7 mx-auto">
+      <p class="lead mb-0">Create an elegant product list using Bootstrap 4 list group</p>
+      <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white">
+                <u>Bootstrapious</u></a>
+      </p>
+    </div>
+  </div>
+<div class="container bootstrap snippets bootdey">
+   <h1 class="text-primary"><span class="glyphicon glyphicon-user"></span>Edit Profile</h1>
+     <hr>
+ <div class="row">
+     <!-- left column -->
+     <div class="col-md-3">
+
+         <img src="https://www.nicepng.com/png/detail/128-1280406_view-user-icon-png-user-circle-icon-png.png"  width="150" height="150" class="avatar img-circle" alt="avatar">
+
+     </div>
+
+     <!-- edit form column -->
+     <div class="col-md-9 personal-info">
+       <h3>Personal info</h3>
+
+       <form id="profile_form" role="form" class="form-horizontal">
+         <div class="form-group">
+  <input type="text" id="id" name="id" class="form-control" hidden></input>
+</div>
+         <div class="form-group">
+           <label for= "name" class="col-lg-3 control-label">First name:</label>
+           <div class="col-lg-8">
+      <input type="text" id="name" name="fname" class="form-control"></input>
+           </div>
+         </div>
+         <div class="form-group">
+           <label for ="surname" class="col-lg-3 control-label">Last name:</label>
+           <div class="col-lg-8">
+ <input type="text" id="surname" name="lname" class="form-control"></input>
+           </div>
+         </div>
+         <div class="form-group">
+           <label for ="phone" class="col-lg-3 control-label">Phone:</label>
+           <div class="col-lg-8">
+ <input type="text" id="phone" name="phone" class="form-control"></input>
+           </div>
+         </div>
+         <div class="form-group">
+           <label for="user_email" class="col-lg-3 control-label">Email:</label>
+           <div class="col-lg-8">
+        <input type="email" id="user_email" name="user_email" class="form-control"></input>
+           </div>
+         </div>
+         <div class="form-group">
+           <label for="psword" class="col-lg-3 control-label">Password:</label>
+           <div class="col-lg-8">
+             <input type="password" id="psword" name="psword" class="form-control"></input>
+           </div>
+         </div>
+          <button  class="btn btn-primary" id="update_profile">Update Profile</button>
+       </form>
+     </div>
+ </div>
+</div>
+<hr>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
 <script type="text/javascript">
   var user = window.localStorage.getItem("user_token");
   user = Utils.parseJwt(user);

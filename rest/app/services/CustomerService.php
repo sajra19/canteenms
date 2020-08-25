@@ -25,12 +25,12 @@ class CustomerService {
       foreach ($customers as $idx => $customer){
 
         if($customer['status'] == 1){
-          $customers[$idx]['update_status'] = '<button class="btn btn-xs btn-outline red" onclick="Customers.update_status('.$customer['user_id'].',0)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</button>';
+          $customers[$idx]['update_status'] = '<button class="btn btn-danger" onclick="Customers.update_status('.$customer['user_id'].',0)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</button>';
         } else  {
-          $customers[$idx]['update_status'] = '<button class="btn btn-xs btn-outline red" onclick="Customers.update_status('.$customer['user_id'].',1)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Activate</button>';
+          $customers[$idx]['update_status'] = '<button class="btn btn-success" onclick="Customers.update_status('.$customer['user_id'].',1)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Activate</button>';
         }
 
-        $customers[$idx]['reset_password'] = '<button class="btn btn-xs btn-outline red" onclick="Customers.reset_password('.$customer['user_id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Reset Password</button>';
+        $customers[$idx]['reset_password'] = '<button class="btn btn-secondary" onclick="Customers.reset_password('.$customer['user_id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Reset Password</button>';
       }
 
       return  $customers;

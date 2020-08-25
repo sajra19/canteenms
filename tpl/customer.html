@@ -4,6 +4,33 @@
   .error {
     color: red;
   }
+  .error{
+    color: red;
+  }
+  .btn-group button {
+  background-color: #2c3e50;
+    border: 1px solid black; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+  }
+
+  /* Clear floats (clearfix hack) */
+  .btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+
+  /* Add a background color on hover */
+  .btn-group button:hover {
+    background-color: #6c757d;
+  }
 </style>
 
 <div style="margin-top: 10%; margin-left: 2%; margin-right: 2%;">
@@ -36,7 +63,7 @@
       </div>
     </div>
   </div>
-
+  <h2>Customers</h2>
   <div class="btn-group" role="group" aria-label="">
     <button
       type="button"
@@ -61,7 +88,7 @@
     </button>
   </div>
 
-  <h2>Customers</h2>
+<div style="margin-top:2%; margin-left: 2%; margin-right:2%; margin-bottom:3%">
   <!-- Trigger the modal with a button -->
 
   <table id="customers_table"></table>

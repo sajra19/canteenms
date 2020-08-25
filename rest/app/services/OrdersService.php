@@ -14,9 +14,9 @@ class OrdersService {
         $dish = $dish_dao->get_by_id($order['dish_id'])[0];
         $orders[$idx]['dish_name'] = $dish['name'];
         $orders[$idx]['price'] = $dish['price'] * $order['amount'];
-        $orders[$idx]['reject'] = '<button class="btn btn-xs btn-outline red" onclick="Cart.update_cart_dish_status('.$order['id'].', \''."REJECTED".'\')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</button>';
-        $orders[$idx]['ready'] = '<button class="btn btn-xs btn-outline red" onclick="Cart.update_cart_dish_status('.$order['id'].', \''."READY".'\')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Ready</button>';
-        $orders[$idx]['finish'] = '<button class="btn btn-xs btn-outline red" onclick="Cart.update_cart_dish_status('.$order['id'].', \''."FINISHED".'\')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Finish</button>';
+        $orders[$idx]['reject'] = '<button class="btn btn-danger" onclick="Cart.update_cart_dish_status('.$order['id'].', \''."REJECTED".'\')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</button>';
+        $orders[$idx]['ready'] = '<button class="btn btn-secondary" onclick="Cart.update_cart_dish_status('.$order['id'].', \''."READY".'\')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Ready</button>';
+        $orders[$idx]['finish'] = '<button class="btn btn-success" onclick="Cart.update_cart_dish_status('.$order['id'].', \''."FINISHED".'\')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Finish</button>';
       }
 
       return $orders;

@@ -133,3 +133,28 @@ Flight::route("DELETE /employees/@id", function ($id, $route) {
     Flight::employee_service()->delete_employee($id);
     Flight::json('Employee has been deleted');
 }, true);
+
+
+
+
+/**
+ *
+ * @OA\Patch(
+ *     path="/employee/{id}/reset_password",
+ *     tags={"employees"},
+ *     summary="Update employee status",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         required=true,
+ *         @OA\Schema(
+ *             type="string"
+ *         )
+ *     ),
+ * )
+ */
+Flight::route('PATCH /employees/@id/reset_password', function ($id, $route) {
+
+    $password = Flight::employee_service()->reset_password($id);
+    Flight::json($password);
+}, true);

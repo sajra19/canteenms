@@ -12,6 +12,11 @@ var Employee = {
             { data: "phone", title: "Phone", defaultContent: "" },
             { data: "update_status", title: "Status", defaultContent: "" },
             { data: "edit_employee", title: "Edit", defaultContent: "" },
+            {
+              data: "reset_password",
+              title: "Reset Password",
+              defaultContent: "",
+            },
           ],
           data
         );
@@ -45,5 +50,22 @@ var Employee = {
       $("#edit_form input[name=user_email]").val(data.email);
       $("#edit_form input[name=phone]").val(data.phone);
     });
+  },
+
+
+  reset_password: function (user_id) {
+    RestClient.patch(
+      "employee/" + user_id + "/reset_password",
+      null,
+      function (data) {
+        $("#passwordButton").trigger("click");
+        $("#new_password").html(data);
+        toastr.success("Employee password updated successfully");
+        Employee.get_employees("active");
+      },
+      function (data) {
+        toastr.error("Employee pasword was not updated");
+      }
+    );
   },
 };

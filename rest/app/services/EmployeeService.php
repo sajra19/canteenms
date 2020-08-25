@@ -32,7 +32,10 @@ class EmployeeService {
         }
 
         $employees[$idx]['edit_employee'] = '<button class="btn btn-xs btn-outline red" data-toggle="modal" data-target="#editModal" onclick="Employee.open_edit_modal('.$employee['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Edit</button>';
+
+        $employees[$idx]['reset_password'] = '<button class="btn btn-xs btn-outline red" onclick="Employee.reset_password('.$employee['user_id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Reset Password</button>';
       }
+
 
       return $employees;
     }
@@ -85,6 +88,17 @@ class EmployeeService {
     public function update_employee($employee){
       $this->employee_dao->update_employee_item($employee);
     }
+
+
+    public function reset_password($id){
+      $rand = substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);
+      $password = password_hash($rand, PASSWORD_DEFAULT);
+
+      $user_dao = new UserDao();
+      $user_dao->update_password($id, $password);
+      return $rand;
+    }
+
 
 
 }

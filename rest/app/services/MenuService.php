@@ -10,8 +10,8 @@ class MenuService {
     public function get_menu(){
       $menus = $this->menu_dao->get_menu();
       foreach ($menus as $idx => $menu){
-        $menus[$idx]['delete_menu'] = '<a class="btn btn-xs btn-outline red" onclick="Menu.delete_menu('.$menu['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>';
-        $menus[$idx]['edit_menu'] = '<button class="btn btn-xs btn-outline red" data-toggle="modal" data-target="#editModal" onclick="Menu.open_edit_modal('.$menu['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Edit</button>';
+        $menus[$idx]['delete_menu'] = '<a class="btn btn-danger" onclick="Menu.delete_menu('.$menu['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>';
+        $menus[$idx]['edit_menu'] = '<button class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="Menu.open_edit_modal('.$menu['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Edit</button>';
       }
 
       return $menus;

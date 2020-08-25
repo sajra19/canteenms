@@ -153,7 +153,7 @@ Flight::route("DELETE /employees/@id", function ($id, $route) {
  *     ),
  * )
  */
-Flight::route('PATCH /employees/@id/reset_password', function ($id, $route) {
+Flight::route('PATCH /employee/@id/reset_password', function ($id, $route) {
 
     $password = Flight::employee_service()->reset_password($id);
     Flight::json($password);

@@ -26,14 +26,14 @@ class EmployeeService {
 
       foreach ($employees as $idx => $employee){
         if($employee['status'] == 1){
-          $employees[$idx]['update_status'] = '<button class="btn btn-xs btn-outline red" onclick="Employee.update_status('.$employee['user_id'].',0)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</button>';
+          $employees[$idx]['update_status'] = '<button class="btn btn-danger" onclick="Employee.update_status('.$employee['user_id'].',0)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</button>';
         } else  {
-          $employees[$idx]['update_status'] = '<button class="btn btn-xs btn-outline red" onclick="Employee.update_status('.$employee['user_id'].',1)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Activate</button>';
+          $employees[$idx]['update_status'] = '<button class="btn btn-success" onclick="Employee.update_status('.$employee['user_id'].',1)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Activate</button>';
         }
 
-        $employees[$idx]['edit_employee'] = '<button class="btn btn-xs btn-outline red" data-toggle="modal" data-target="#editModal" onclick="Employee.open_edit_modal('.$employee['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Edit</button>';
+        $employees[$idx]['edit_employee'] = '<button class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="Employee.open_edit_modal('.$employee['id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Edit</button>';
 
-        $employees[$idx]['reset_password'] = '<button class="btn btn-xs btn-outline red" onclick="Employee.reset_password('.$employee['user_id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Reset Password</button>';
+        $employees[$idx]['reset_password'] = '<button class="btn btn-secondary" onclick="Employee.reset_password('.$employee['user_id'].')"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Reset Password</button>';
       }
 
 

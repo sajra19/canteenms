@@ -12,8 +12,8 @@ class UserService {
       $is_admin = false;
       if($db_user){
         //UPDATE PASSWORD VERIFICATION
-          //if($db_user['password'] == $user['psword']){
-      if(password_verify($user['psword'], $db_user['password']) /*$db_user['password'] == $user['psword']*/){
+          if($db_user['password'] == $user['psword']){
+    //  if(password_verify($user['psword'], $db_user['password']) /*$db_user['password'] == $user['psword']*/){
           if($db_user['type_id'] == 3){
             $employee_dao = new EmployeeDao();
             $db_user_data = $employee_dao->get_by_id($db_user['id']);

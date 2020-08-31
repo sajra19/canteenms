@@ -158,35 +158,6 @@ invalidHandler: function(event, validator) {
 });
 
 
-
-$("#register_form").validate({
- focusCleanup: true,
- errorElement: "em",
-rules: {
-  user_email: {
-    required: true,
-  },
-  name: {
-    required: true,
-  },
-  surname: {
-    required: true,
-  },
-  psword: {
-    required: true,
-    minlength: 2,
-    maxlength: 10
-  }
-},
-messages: {
-  user_email: 'Enter a valid email address.',
-  psword: {
-    maxlength: 'Please enter no more than 10 characters.'
-  }
-}
-
-});
-
 $("#register_form").validate({
 submitHandler: function(form, validator) {
   $.post('rest/register', $("#register_form").serialize()).done(function(data){
@@ -197,5 +168,8 @@ submitHandler: function(form, validator) {
   });
 }
 });
+
+
+
 
 </script>

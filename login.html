@@ -43,8 +43,8 @@
           <input type="password" id="psword" name="psword" class="form-control"></input>
         </div>
         <div style="margin-top:4%; margin-right:2%; margin-bottom: 5%">
-        <button type="submit" class="btn btn-success">Login</button>
-        <button class="btn btn-success" type="reset"  id="register_btn">Register</button>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <button class="btn btn-secondary" type="reset"  id="register_btn">Register</button>
       </div>
       </div>
       </form>
@@ -71,8 +71,9 @@
             <label for="psword">Password:</label>
             <input type="password" id="psword" name="psword" class="form-control"></input>
           </div>
-          <button type="submit" class="btn btn-success">Register</button>
-          <button  class="btn btn-success" id="login_btn">Back to Login</button>
+          <div style="margin-top:4%; margin-right:2%; margin-bottom: 5%">
+          <button type="submit" class="btn btn-primary">Register</button>
+          <button  class="btn btn-secondary" id="login_btn">Back to Login</button>
         </div>
           </div>
       </form>
@@ -104,7 +105,7 @@ $('#login_btn').click(function(e){
 
 jQuery.validator.addMethod("user_email", function(value, element){
   return this.optional( element ) || /[a-z]+@[a-z]+\.[a-z]+/.test( value );
-}, 'Invalid email address');
+}, 'Invalid email address.');
 
 
 
@@ -122,9 +123,9 @@ rules: {
   }
 },
 messages: {
-  user_email: 'Enter a valid email',
+  user_email: 'Enter a valid email address.',
   psword: {
-    minlength: 'Password must be at least 8 characters long'
+    minlength: 'Password must be at least 6 characters long.'
   }
 },
 submitHandler: function(form, validator) {
@@ -154,6 +155,36 @@ invalidHandler: function(event, validator) {
     $("div.error").hide();
   }
  }
+});
+
+
+
+$("#register_form").validate({
+ focusCleanup: true,
+ errorElement: "em",
+rules: {
+  user_email: {
+    required: true,
+  },
+  name: {
+    required: true,
+  },
+  surname: {
+    required: true,
+  },
+  psword: {
+    required: true,
+    minlength: 2,
+    maxlength: 10
+  }
+},
+messages: {
+  user_email: 'Enter a valid email address.',
+  psword: {
+    maxlength: 'Please enter no more than 10 characters.'
+  }
+}
+
 });
 
 $("#register_form").validate({
